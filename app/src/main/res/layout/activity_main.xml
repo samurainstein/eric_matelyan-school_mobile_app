@@ -7,12 +7,42 @@
     tools:context=".UI.MainActivity">
 
     <TextView
+        android:id="@+id/home_text_view"
+        android:text="@string/home_text_view"
+        android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/home_terms_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/home_terms_button"
+        android:textSize="24sp"
+        android:onClick="termsButton"
+        app:layout_constraintTop_toBottomOf="@id/home_text_view"/>
+
+    <Button
+        android:id="@+id/home_courses_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/home_courses_button"
+        android:textSize="24sp"
+        android:onClick="coursesButton"
+        app:layout_constraintTop_toBottomOf="@id/home_terms_button"/>
+
+    <Button
+        android:id="@+id/home_assignments_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/home_assignments_button"
+        android:textSize="24sp"
+        android:onClick="assignmentsButton"
+        app:layout_constraintTop_toBottomOf="@id/home_courses_button"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
