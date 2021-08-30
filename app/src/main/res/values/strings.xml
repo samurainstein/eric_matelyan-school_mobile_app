@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Eric Matelyan - School Mobile App</string>
+    <string name="home_text_view">What are you looking for?</string>
+    <string name="home_terms_button">Terms</string>
+    <string name="home_courses_button">Courses</string>
+    <string name="home_assignments_button">Assignments</string>
 </resources>
