@@ -15,6 +15,9 @@ import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 @Database(entities = {TermEntity.class, CourseEntity.class, AssignmentEntity.class}, version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class})
 public abstract class SchoolCalendarDB extends RoomDatabase {
@@ -22,6 +25,10 @@ public abstract class SchoolCalendarDB extends RoomDatabase {
     public abstract TermDAO termDAO();
     public abstract CourseDAO courseDAO();
     public abstract AssignmentDAO assignmentDAO();
+
+    private static final int NUMBER_OF_THREADS = 4;
+    static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+
 
     private static volatile SchoolCalendarDB INSTANCE;
 
