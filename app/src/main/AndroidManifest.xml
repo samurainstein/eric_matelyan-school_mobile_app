@@ -10,15 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EricMatelyanSchoolMobileApp">
         <activity
+            android:name=".UI.TermsDetailActivity"
+            android:exported="true"
+            android:label="Term Details"
+            android:parentActivityName=".UI.TermsActivity"/>
+        <activity
             android:name=".UI.AssignmentsActivity"
             android:exported="true"
             android:label="Assignments"
-            android:parentActivityName=".UI.MainActivity"/>
+            android:parentActivityName=".UI.MainActivity" />
         <activity
             android:name=".UI.CoursesActivity"
             android:exported="true"
             android:label="Courses"
-            android:parentActivityName=".UI.MainActivity"/>
+            android:parentActivityName=".UI.MainActivity" />
         <activity
             android:name=".UI.TermsActivity"
             android:exported="true"
