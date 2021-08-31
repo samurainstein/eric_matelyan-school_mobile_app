@@ -21,9 +21,6 @@ public class SchoolCalendarRepo {
     private List<CourseEntity> allCourses;
     private List<AssignmentEntity> allAssignments;
 
-    private static int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-
     public SchoolCalendarRepo(Application application) {
         SchoolCalendarDB database = SchoolCalendarDB.getDatabase(application);
         termDao = database.termDAO();
@@ -32,7 +29,7 @@ public class SchoolCalendarRepo {
     }
 
     public List<TermEntity> getAllTerms() {
-        databaseExecutor.execute(()-> {
+        SchoolCalendarDB.databaseExecutor.execute(()-> {
             allTerms = termDao.getAllTerms();
         });
         try {
@@ -44,7 +41,7 @@ public class SchoolCalendarRepo {
     }
 
     public void insert(TermEntity term) {
-        databaseExecutor.execute(()-> {
+        SchoolCalendarDB.databaseExecutor.execute(()-> {
             termDao.insert(term);
         });
         try {
@@ -55,7 +52,7 @@ public class SchoolCalendarRepo {
     }
 
     public List<CourseEntity> getAllCourses() {
-        databaseExecutor.execute(()-> {
+        SchoolCalendarDB.databaseExecutor.execute(()-> {
             allCourses = courseDao.getAllCourses();
         });
         try {
@@ -67,7 +64,7 @@ public class SchoolCalendarRepo {
     }
 
     public void insert(CourseEntity course) {
-        databaseExecutor.execute(()-> {
+        SchoolCalendarDB.databaseExecutor.execute(()-> {
             courseDao.insert(course);
         });
         try {
@@ -78,7 +75,7 @@ public class SchoolCalendarRepo {
     }
 
     public List<AssignmentEntity> getAllAssignments() {
-        databaseExecutor.execute(()-> {
+        SchoolCalendarDB.databaseExecutor.execute(()-> {
             allAssignments = assignmentDAO.getAllAssignments();
         });
         try {
@@ -90,7 +87,7 @@ public class SchoolCalendarRepo {
     }
 
     public void insert(AssignmentEntity assignment) {
-        databaseExecutor.execute(()-> {
+        SchoolCalendarDB.databaseExecutor.execute(()-> {
             assignmentDAO.insert(assignment);
         });
         try {
