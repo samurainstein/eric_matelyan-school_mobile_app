@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
@@ -34,5 +36,10 @@ public class TermsActivity extends AppCompatActivity {
         recyclerView.setAdapter(termAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         termAdapter.setTerms(allTerms);
+    }
+
+    public void addTerm(View view) {
+        Intent intent = new Intent(this, AddTermActivity.class);
+        startActivity(intent);
     }
 }
