@@ -8,4 +8,5 @@
     <string name="add_term_title">Term Title</string>
     <string name="add_term_hint">Term 1, Spring Term, etc</string>
     <string name="menu_home">Home</string>
+    <string name="add_term_start">Start Date</string>
 </resources>
