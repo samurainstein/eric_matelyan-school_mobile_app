@@ -22,27 +22,26 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:text="@string/home_terms_button"
-        android:textSize="24sp"
         android:onClick="termsButton"
-        app:layout_constraintTop_toBottomOf="@id/home_text_view"/>
+        app:layout_constraintTop_toBottomOf="@id/home_text_view"
+        style="@style/DefaultButton"/>
 
     <Button
         android:id="@+id/home_courses_button"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:text="@string/home_courses_button"
-        android:textSize="24sp"
         android:onClick="coursesButton"
-        app:layout_constraintTop_toBottomOf="@id/home_terms_button"/>
+        app:layout_constraintTop_toBottomOf="@id/home_terms_button"
+        style="@style/DefaultButton"/>
 
     <Button
         android:id="@+id/home_assignments_button"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:text="@string/home_assignments_button"
-        android:textSize="24sp"
         android:onClick="assignmentsButton"
-        app:layout_constraintTop_toBottomOf="@id/home_courses_button"/>
-
+        app:layout_constraintTop_toBottomOf="@id/home_courses_button"
+        style="@style/DefaultButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
