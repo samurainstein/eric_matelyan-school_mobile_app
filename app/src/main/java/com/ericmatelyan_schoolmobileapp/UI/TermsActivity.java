@@ -25,11 +25,8 @@ public class TermsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_terms);
 
         repository = new SchoolCalendarRepo(getApplication());
-        //FIX THIS: Crashes program
-//        List<TermEntity> allTerms = repository.getAllTerms();
-        List<TermEntity> allTerms = null;
-//        TermEntity term1 = new TermEntity(2, "Term 2", LocalDate.now(), LocalDate.now().plusDays(90));
-//        allTerms.add(term1);
+        //FIX THIS: Crashes program (due to Date Converter)
+        List<TermEntity> allTerms = repository.getAllTerms();
         
         RecyclerView recyclerView = findViewById(R.id.terms_recycler);
         final TermAdapter termAdapter = new TermAdapter(this);
