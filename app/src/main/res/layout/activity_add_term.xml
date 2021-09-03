@@ -15,19 +15,20 @@
 
         <TextView
             android:id="@+id/add_term_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:text="@string/add_term_title"
-            android:textSize="34sp" />
+            style="@style/addScreenLabel" />
 
         <EditText
             android:id="@+id/add_term_edit_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:layout_below="@id/add_term_title"
-            android:hint="@string/add_term_hint"/>
+            android:hint="@string/add_term_hint"
+            style="@style/addScreenEdit"/>
+
+        <TextView
+            android:id="@+id/add_term_start"
+            android:text="@string/add_term_start"
+            android:layout_below="@id/add_term_edit_title"
+            style="@style/addScreenLabel" />
 
     </RelativeLayout>
 
