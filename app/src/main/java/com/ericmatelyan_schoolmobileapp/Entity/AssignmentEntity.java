@@ -4,6 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity(tableName = "assignment_table")
 public class AssignmentEntity {
@@ -11,10 +12,10 @@ public class AssignmentEntity {
     private int assignmentId;
     private String assignmentType;
     private String assignmentTitle;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private Date startDate;
+    private Date endDate;
 
-    public AssignmentEntity(int assignmentId, String assignmentType, String assignmentTitle, LocalDate startDate, LocalDate endDate) {
+    public AssignmentEntity(int assignmentId, String assignmentType, String assignmentTitle, Date startDate, Date endDate) {
         this.assignmentId = assignmentId;
         this.assignmentType = assignmentType;
         this.assignmentTitle = assignmentTitle;
@@ -46,19 +47,19 @@ public class AssignmentEntity {
         this.assignmentTitle = assignmentTitle;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

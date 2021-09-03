@@ -4,20 +4,21 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity (tableName = "course_table")
 public class CourseEntity {
     @PrimaryKey(autoGenerate = true)
     private int courseId;
     private String courseName;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private Date startDate;
+    private Date endDate;
     private String status;
     private String instructorName;
     private String instructorPhone;
     private String instructorEmail;
 
-    public CourseEntity(int courseId, String courseName, LocalDate startDate, LocalDate endDate, String status,
+    public CourseEntity(int courseId, String courseName, Date startDate, Date endDate, String status,
                         String instructorName, String instructorPhone, String instructorEmail) {
         this.courseId = courseId;
         this.courseName = courseName;
@@ -45,19 +46,19 @@ public class CourseEntity {
         this.courseName = courseName;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
