@@ -11,16 +11,18 @@ import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Date testDate = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SchoolCalendarRepo repository = new SchoolCalendarRepo(getApplication());
-        //FIX THIS: Date converter for room database?
-        TermEntity term1 = new TermEntity(1,  "Term 1", LocalDate.now(), LocalDate.now().plusDays(90));
+        TermEntity term1 = new TermEntity(1,  "Term 1", testDate, testDate);
         repository.insert(term1);
     }
 
