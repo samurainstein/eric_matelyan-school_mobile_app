@@ -6,14 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".UI.TermsDetailActivity">
 
-    <EditText
-        android:id="@+id/term_details_edit"
-        android:layout_width="wrap_content"
+    <RelativeLayout
         android:layout_height="wrap_content"
-        android:text="Term Details"
+        android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/term_details_title_label"
+            android:text="@string/term_title"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/term_details_title_text"
+            android:layout_below="@id/term_details_title_label"
+            style="@style/itemEdit"/>
+
+        <TextView
+            android:id="@+id/term_details_start_label"
+            android:text="@string/term_start"
+            android:layout_below="@id/term_details_title_text"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/term_details_start_text"
+            android:layout_below="@id/term_details_start_label"
+            style="@style/itemEdit" />
+
+        <TextView
+            android:id="@+id/term_details_end_label"
+            android:text="@string/term_end"
+            android:layout_below="@id/term_details_start_text"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/term_details_end_text"
+            android:layout_below="@id/term_details_end_label"
+            style="@style/itemEdit" />
+
+    </RelativeLayout>
+
+<!--    <Button-->
+<!--        android:id="@+id/button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/save_term_button"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:onClick="add_term_save"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
