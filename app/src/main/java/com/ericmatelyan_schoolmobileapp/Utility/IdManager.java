@@ -11,13 +11,13 @@ public abstract class IdManager {
     private static int nextCourseId = 0;
     private static int nextAssignmentId = 0;
 
-//    public static void setNextTermId(SchoolCalendarRepo repository) {
-//        List<TermEntity> allTerms = repository.getAllTerms();
-//        int lastIndex = allTerms.size() - 1;
-//        TermEntity lastTerm = allTerms.get(lastIndex);
-//        int lastTermId = lastTerm.getTermId();
-//        nextTermId = lastTermId;
-//    }
+    public static void setNextTermId(SchoolCalendarRepo repository) {
+        List<TermEntity> allTerms = repository.getAllTerms();
+        int lastIndex = allTerms.size() - 1;
+        TermEntity lastTerm = allTerms.get(lastIndex);
+        int lastTermId = lastTerm.getTermId();
+        nextTermId = lastTermId;
+    }
 
     public static int getNextTermId() {
         nextTermId = nextTermId + 1;
