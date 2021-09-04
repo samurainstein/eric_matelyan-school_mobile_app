@@ -24,6 +24,6 @@ public interface TermDAO {
     @Delete
     void delete(TermEntity term);
 
-    @Query("SELECT * FROM term_table")
+    @Query("SELECT * FROM term_table ORDER BY termId")
     List<TermEntity> getAllTerms();
 }
