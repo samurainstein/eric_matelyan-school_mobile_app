@@ -29,8 +29,9 @@ public class TermsActivity extends AppCompatActivity {
         
         RecyclerView recyclerView = findViewById(R.id.terms_recycler);
         final TermAdapter termAdapter = new TermAdapter(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setAdapter(termAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(linearLayoutManager);
         termAdapter.setTerms(allTerms);
     }
 
