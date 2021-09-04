@@ -9,4 +9,6 @@
     <string name="add_term_hint">Term 1, Spring Term, etc</string>
     <string name="menu_home">Home</string>
     <string name="add_term_start">Start Date</string>
+    <string name="add_term_date_hint">Select a Date</string>
+    <string name="add_term_end">End Date</string>
 </resources>
