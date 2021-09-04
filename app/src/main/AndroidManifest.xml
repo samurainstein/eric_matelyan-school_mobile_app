@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EricMatelyanSchoolMobileApp">
         <activity
+            android:name=".UI.EditTermActivity"
+            android:exported="true"
+            android:label="Edit Term"
+            android:parentActivityName=".UI.AddTermActivity"/>
+        <activity
             android:name=".UI.AddTermActivity"
             android:exported="true"
             android:label="Add Term"
-            android:parentActivityName=".UI.TermsActivity"/>
+            android:parentActivityName=".UI.TermsActivity" />
         <activity
             android:name=".UI.TermsDetailActivity"
             android:exported="true"
