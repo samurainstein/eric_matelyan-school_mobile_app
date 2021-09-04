@@ -16,7 +16,6 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Date testDate = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
