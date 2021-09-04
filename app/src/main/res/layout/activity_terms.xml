@@ -18,8 +18,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/terms_recycler"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
-        android:background="@color/teal_200"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -29,15 +28,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:backgroundTint="@color/white"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
         android:onClick="addTerm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:srcCompat="@android:drawable/ic_menu_add"
+        style="@style/floatingActionButton"/>
 
-    <!--    tools:layout_editor_absoluteX="1dp"-->
-<!--    tools:layout_editor_absoluteY="68dp"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
