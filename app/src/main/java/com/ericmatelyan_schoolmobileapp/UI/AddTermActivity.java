@@ -26,7 +26,7 @@ import java.util.Locale;
 
 public class AddTermActivity extends AppCompatActivity {
 
-    EditText editTitle;
+    EditText termName;
     SchoolCalendarRepo repository;
     private static final String TAG = "AddTermActivity";
 
@@ -41,12 +41,12 @@ public class AddTermActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_term);
-        editTitle = findViewById(R.id.add_term_edit_title);
+        termName = findViewById(R.id.term_add_title_text);
         repository = new SchoolCalendarRepo(getApplication());
-//        IdManager.setNextTermId(repository);
+        IdManager.setNextTermId(repository);
 
         //Start Date----------------
-        displayStartDate = findViewById(R.id.add_term_start_date);
+        displayStartDate = findViewById(R.id.term_add_start_text);
         displayStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,7 +77,7 @@ public class AddTermActivity extends AppCompatActivity {
         };
 
         //End Date---------------------
-        displayEndDate = findViewById(R.id.add_term_end_date);
+        displayEndDate = findViewById(R.id.term_add_end_text);
         displayEndDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,7 +124,7 @@ public class AddTermActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.homemenu, menu);
         return true;
     }
 
@@ -143,10 +143,9 @@ public class AddTermActivity extends AppCompatActivity {
 
     public void add_term_save(View view) {
         int Id = IdManager.getNextTermId();
-        String title = editTitle.getText().toString();
+        String title = termName.getText().toString();
         Date startDate = startCalendar.getTime();
         Date endDate = endCalendar.getTime();
-//       FIX THIS:
         TermEntity newTerm = new TermEntity(Id, title, startDate, endDate);
         repository.insert(newTerm);
 
