@@ -30,6 +30,24 @@
             android:layout_below="@id/add_term_edit_title"
             style="@style/addScreenLabel" />
 
+        <TextView
+            android:id="@+id/add_term_start_date"
+            android:hint="@string/add_term_date_hint"
+            android:layout_below="@id/add_term_start"
+            style="@style/addScreenEdit" />
+
+        <TextView
+            android:id="@+id/add_term_end"
+            android:text="@string/add_term_end"
+            android:layout_below="@id/add_term_start_date"
+            style="@style/addScreenLabel" />
+
+        <TextView
+            android:id="@+id/add_term_end_date"
+            android:hint="@string/add_term_date_hint"
+            android:layout_below="@id/add_term_end"
+            style="@style/addScreenEdit" />
+
     </RelativeLayout>
 
     <Button
