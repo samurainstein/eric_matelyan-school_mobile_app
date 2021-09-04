@@ -14,7 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder> {
 
@@ -31,9 +34,16 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     final TermEntity current = listTerms.get(position);
-                    Intent intent = new Intent(context, TermsActivity.class);
+
+                    String myFormat = "MM/dd/yy";
+                    SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                    String startDateText = sdf.format(current.getStartDate());
+                    String endDateText = sdf.format(current.getEndDate());
+                    Intent intent = new Intent(context, TermsDetailActivity.class);
                     intent.putExtra("termId", current.getTermId());
                     intent.putExtra("termName", current.getTermName());
+                    intent.putExtra("startDate", startDateText);
+                    intent.putExtra("endDate", endDateText);
                     context.startActivity(intent);
                 }
             });
