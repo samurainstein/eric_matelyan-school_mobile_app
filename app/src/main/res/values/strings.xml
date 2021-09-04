@@ -5,10 +5,11 @@
     <string name="home_courses_button">Courses</string>
     <string name="home_assignments_button">Assignments</string>
     <string name="save_term_button">Save</string>
-    <string name="add_term_title">Term Title</string>
+    <string name="term_title">Term Title</string>
     <string name="add_term_hint">Term 1, Spring Term, etc</string>
     <string name="menu_home">Home</string>
-    <string name="add_term_start">Start Date</string>
+    <string name="term_start">Start Date</string>
     <string name="add_term_date_hint">Select a Date</string>
-    <string name="add_term_end">End Date</string>
+    <string name="term_end">End Date</string>
+    <string name="menu_edit">Edit</string>
 </resources>
