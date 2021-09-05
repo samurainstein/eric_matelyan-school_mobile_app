@@ -104,6 +104,11 @@ public abstract class DateConverter {
         return calendar;
     }
 
+    public static String dateToString(Date date) {
+        String dateString =simpleDateFormat.format(date);
+        return dateString;
+    }
+
     public static Date stringToDate(String dateString) {
         try {
             startDate = simpleDateFormat.parse(dateString);
