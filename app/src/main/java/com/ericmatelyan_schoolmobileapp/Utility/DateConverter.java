@@ -10,7 +10,10 @@ import android.widget.TextView;
 
 import androidx.room.TypeConverter;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -21,6 +24,7 @@ public abstract class DateConverter {
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat, Locale.US);
     private static DatePickerDialog.OnDateSetListener startDateSetListener;
     private static DatePickerDialog.OnDateSetListener endDateSetListener;
+    private static Date startDate;
 
     @TypeConverter
     public static Date toDate(Long timestamp) {
@@ -98,5 +102,21 @@ public abstract class DateConverter {
             }
         };
         return calendar;
+    }
+
+    public static Date stringToDate(String dateString) {
+        try {
+            startDate = simpleDateFormat.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return startDate;
+    }
+
+    public static LocalDate dateToLocalDate(Date date) {
+        LocalDate startLocalDate = date.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+        return startLocalDate;
     }
 }
