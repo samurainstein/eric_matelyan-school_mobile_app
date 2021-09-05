@@ -12,4 +12,5 @@
     <string name="add_term_date_hint">Select a Date</string>
     <string name="term_end">End Date</string>
     <string name="menu_edit">Edit</string>
+    <string name="menu_delete">menu_delete</string>
 </resources>
