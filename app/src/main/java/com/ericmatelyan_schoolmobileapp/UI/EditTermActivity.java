@@ -54,6 +54,7 @@ public class EditTermActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_term);
 
+        //Set Fields-----------------------
         termId = getIntent().getIntExtra("termId", -1);
         termName = getIntent().getStringExtra("termName");
         startDate = getIntent().getStringExtra("startDate");
@@ -67,23 +68,11 @@ public class EditTermActivity extends AppCompatActivity {
         startText.setText(startDate);
         endText.setText(endDate);
 
-        try {
-            startDateClass = simpleDateFormat.parse(startDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        LocalDate startLocalDate = startDateClass.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
+        startDateClass = DateConverter.stringToDate(startDate);
+        LocalDate startLocalDate = DateConverter.dateToLocalDate(startDateClass);
 
-        try {
-            endDateClass = simpleDateFormat.parse(startDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        LocalDate endLocalDate = endDateClass.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
+        endDateClass = DateConverter.stringToDate(endDate);
+        LocalDate endLocalDate = DateConverter.dateToLocalDate(endDateClass);
 
         repository = new SchoolCalendarRepo(getApplication());
 
