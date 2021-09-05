@@ -1,19 +1,15 @@
 package com.ericmatelyan_schoolmobileapp.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
@@ -21,10 +17,8 @@ import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 import com.ericmatelyan_schoolmobileapp.Utility.IdManager;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class AddTermActivity extends AppCompatActivity {
 
@@ -78,6 +72,7 @@ public class AddTermActivity extends AppCompatActivity {
     }
 
     public void add_term_save(View view) {
+        //FIX THIS: Make sure all fields are filled in.
         int termId = IdManager.getNextTermId();
         String title = termName.getText().toString();
         Date startDate = startCalendar.getTime();
