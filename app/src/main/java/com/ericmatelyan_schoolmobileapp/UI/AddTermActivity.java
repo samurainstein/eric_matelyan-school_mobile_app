@@ -3,6 +3,7 @@ package com.ericmatelyan_schoolmobileapp.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
+import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 import com.ericmatelyan_schoolmobileapp.Utility.IdManager;
 
 import java.text.SimpleDateFormat;
@@ -30,12 +32,11 @@ public class AddTermActivity extends AppCompatActivity {
     SchoolCalendarRepo repository;
     private static final String TAG = "AddTermActivity";
 
+    Context context = AddTermActivity.this;
     private TextView displayStartDate;
     private TextView displayEndDate;
-    private DatePickerDialog.OnDateSetListener startDateSetListener;
-    private DatePickerDialog.OnDateSetListener endDateSetListener;
-    Calendar startCalendar = Calendar.getInstance();
-    Calendar endCalendar = Calendar.getInstance();
+    private Calendar startCalendar;
+    private Calendar endCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,82 +46,15 @@ public class AddTermActivity extends AppCompatActivity {
         repository = new SchoolCalendarRepo(getApplication());
         IdManager.setNextTermId(repository);
 
-        //Start Date----------------
         displayStartDate = findViewById(R.id.term_add_start_text);
-        displayStartDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int year = startCalendar.get(Calendar.YEAR);
-                int month = startCalendar.get(Calendar.MONTH);
-                int day = startCalendar.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        AddTermActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog,
-                        startDateSetListener,
-                        year,
-                        month,
-                        day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-
-        startDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                startCalendar.set(Calendar.YEAR, year);
-                startCalendar.set(Calendar.MONTH, month);
-                startCalendar.set(Calendar.DAY_OF_MONTH, day);
-                updateStartDateLabel();
-            }
-        };
-
-        //End Date---------------------
         displayEndDate = findViewById(R.id.term_add_end_text);
-        displayEndDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int year = endCalendar.get(Calendar.YEAR);
-                int month = endCalendar.get(Calendar.MONTH);
-                int day = endCalendar.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        AddTermActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog,
-                        endDateSetListener,
-                        year,
-                        month,
-                        day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-
-        endDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                endCalendar.set(Calendar.YEAR, year);
-                endCalendar.set(Calendar.MONTH, month);
-                endCalendar.set(Calendar.DAY_OF_MONTH, day);
-                updateEndDateLabel();
-            }
-        };
+        startCalendar = Calendar.getInstance();
+        endCalendar = Calendar.getInstance();
+        startCalendar = DateConverter.onClickStartDate(context, displayStartDate, startCalendar);
+        endCalendar = DateConverter.onClickEndDate(context, displayEndDate, endCalendar);
     }
 
-    private void updateStartDateLabel() {
-        String myFormat = "MM/dd/yy";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-        displayStartDate.setText(sdf.format(startCalendar.getTime()));
-    }
-
-    private void updateEndDateLabel() {
-        String myFormat = "MM/dd/yy";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-        displayEndDate.setText(sdf.format(endCalendar.getTime()));
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -142,11 +76,11 @@ public class AddTermActivity extends AppCompatActivity {
     }
 
     public void add_term_save(View view) {
-        int Id = IdManager.getNextTermId();
+        int termId = IdManager.getNextTermId();
         String title = termName.getText().toString();
         Date startDate = startCalendar.getTime();
         Date endDate = endCalendar.getTime();
-        TermEntity newTerm = new TermEntity(Id, title, startDate, endDate);
+        TermEntity newTerm = new TermEntity(termId, title, startDate, endDate);
         repository.insert(newTerm);
 
         Intent intent = new Intent(this, TermsActivity.class);
