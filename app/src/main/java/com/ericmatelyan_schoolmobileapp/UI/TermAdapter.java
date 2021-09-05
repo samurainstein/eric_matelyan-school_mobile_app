@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
+import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,11 +22,16 @@ import java.util.Locale;
 
 public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder> {
 
+    private List<TermEntity> listTerms;
+    private final Context context;
+    private final LayoutInflater inflater;
+
     class TermViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView termItemView;
         private String startDateText;
         private String endDateText;
+
 
         private TermViewHolder(View itemView) {
             super(itemView);
@@ -37,10 +43,8 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
                     int position = getAdapterPosition();
                     final TermEntity current = listTerms.get(position);
 
-                    String myFormat = "MM/dd/yy";
-                    SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                    startDateText = sdf.format(current.getStartDate());
-                    endDateText = sdf.format(current.getEndDate());
+                    startDateText = DateConverter.dateToString(current.getStartDate());
+                    endDateText = DateConverter.dateToString(current.getEndDate());
                     Intent intent = new Intent(context, TermsDetailActivity.class);
                     intent.putExtra("termId", current.getTermId());
                     intent.putExtra("termName", current.getTermName());
@@ -51,9 +55,6 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
             });
         }
     }
-    private List<TermEntity> listTerms;
-    private final Context context;
-    private final LayoutInflater inflater;
 
     public TermAdapter(Context context) {
         inflater = LayoutInflater.from(context);
