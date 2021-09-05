@@ -22,8 +22,10 @@ import java.util.Locale;
 public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder> {
 
     class TermViewHolder extends RecyclerView.ViewHolder {
-        private final TextView termItemView;
 
+        private final TextView termItemView;
+        private String startDateText;
+        private String endDateText;
 
         private TermViewHolder(View itemView) {
             super(itemView);
@@ -37,8 +39,8 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
 
                     String myFormat = "MM/dd/yy";
                     SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                    String startDateText = sdf.format(current.getStartDate());
-                    String endDateText = sdf.format(current.getEndDate());
+                    startDateText = sdf.format(current.getStartDate());
+                    endDateText = sdf.format(current.getEndDate());
                     Intent intent = new Intent(context, TermsDetailActivity.class);
                     intent.putExtra("termId", current.getTermId());
                     intent.putExtra("termName", current.getTermName());
