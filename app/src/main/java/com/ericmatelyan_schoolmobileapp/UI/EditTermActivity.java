@@ -1,27 +1,21 @@
 package com.ericmatelyan_schoolmobileapp.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -40,8 +34,6 @@ public class EditTermActivity extends AppCompatActivity {
     SchoolCalendarRepo repository;
     private TextView displayStartDate;
     private TextView displayEndDate;
-    private DatePickerDialog.OnDateSetListener startDateSetListener;
-    private DatePickerDialog.OnDateSetListener endDateSetListener;
     private Calendar startCalendar;
     private Calendar endCalendar;
     Date startDateClass;
@@ -102,6 +94,7 @@ public class EditTermActivity extends AppCompatActivity {
 
 
     public void add_term_save(View view) {
+        //FIX THIS: Make sure all fields are filled in.
         String title = titleText.getText().toString();
         Date startDate = startCalendar.getTime();
         Date endDate = endCalendar.getTime();
