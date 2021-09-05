@@ -12,6 +12,7 @@ import com.ericmatelyan_schoolmobileapp.R;
 
 public class TermsDetailActivity extends AppCompatActivity {
 
+    private int termId;
     private String termName;
     private String startDate;
     private String endDate;
@@ -24,6 +25,7 @@ public class TermsDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms_detail);
 
+        termId = getIntent().getIntExtra("termId", -1);
         termName = getIntent().getStringExtra("termName");
         startDate = getIntent().getStringExtra("startDate");
         endDate = getIntent().getStringExtra("endDate");
@@ -53,6 +55,7 @@ public class TermsDetailActivity extends AppCompatActivity {
 
             case R.id.edit_menu_item:
                 Intent editIntent = new Intent(this, EditTermActivity.class);
+                editIntent.putExtra("termId", termId);
                 editIntent.putExtra("termName", termName);
                 editIntent.putExtra("startDate", startDate);
                 editIntent.putExtra("endDate", endDate);
