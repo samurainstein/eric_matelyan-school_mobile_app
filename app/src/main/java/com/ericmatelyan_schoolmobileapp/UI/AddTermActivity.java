@@ -42,7 +42,9 @@ public class AddTermActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_term);
+
         termName = findViewById(R.id.term_add_title_text);
+
         repository = new SchoolCalendarRepo(getApplication());
         IdManager.setNextTermId(repository);
 
