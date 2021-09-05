@@ -3,6 +3,8 @@ package com.ericmatelyan_schoolmobileapp.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,7 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
+import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
+import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,6 +29,8 @@ import java.util.Locale;
 public class EditTermActivity extends AppCompatActivity {
 
     private static final String TAG = "EditTermActivity";
+    private Context context = EditTermActivity.this;
+    private int termId;
     private String termName;
     private String startDate;
     private String endDate;
@@ -36,8 +42,8 @@ public class EditTermActivity extends AppCompatActivity {
     private TextView displayEndDate;
     private DatePickerDialog.OnDateSetListener startDateSetListener;
     private DatePickerDialog.OnDateSetListener endDateSetListener;
-    Calendar startCalendar = Calendar.getInstance();
-    Calendar endCalendar = Calendar.getInstance();
+    private Calendar startCalendar;
+    private Calendar endCalendar;
     Date startDateClass;
     Date endDateClass;
     String dateFormat = "MM/dd/yy";
@@ -48,6 +54,7 @@ public class EditTermActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_term);
 
+        termId = getIntent().getIntExtra("termId", -1);
         termName = getIntent().getStringExtra("termName");
         startDate = getIntent().getStringExtra("startDate");
         endDate = getIntent().getStringExtra("endDate");
@@ -82,84 +89,41 @@ public class EditTermActivity extends AppCompatActivity {
 
         //Start Date----------------
         displayStartDate = findViewById(R.id.term_edit_start_text);
-        displayStartDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                int year = startCalendar.get(Calendar.YEAR);
-//                int month = startCalendar.get(Calendar.MONTH);
-//                int day = startCalendar.get(Calendar.DAY_OF_MONTH);
-//                int year = startEditDate.getYear();
-//                int month = startEditDate.getMonth();
-//                int day = startEditDate.getDay();
-                int year = startLocalDate.getYear();
-                int month = startLocalDate.getMonthValue();
-                int day = startLocalDate.getDayOfMonth();
+        startCalendar = Calendar.getInstance();
+        int startYear = startLocalDate.getYear();
+        int startMonth = startLocalDate.getMonthValue() - 1;
+        int startDay = startLocalDate.getDayOfMonth();
+        startCalendar.set(Calendar.YEAR, startYear);
+        startCalendar.set(Calendar.MONTH, startMonth);
+        startCalendar.set(Calendar.DAY_OF_MONTH, startDay);
+        startCalendar = DateConverter.onClickStartDate(context, displayStartDate, startCalendar);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        EditTermActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog,
-                        startDateSetListener,
-                        year,
-                        month-1,
-                        day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-
-        startDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                startCalendar.set(Calendar.YEAR, year);
-                startCalendar.set(Calendar.MONTH, month);
-                startCalendar.set(Calendar.DAY_OF_MONTH, day);
-                updateStartDateLabel();
-            }
-        };
 
         //End Date---------------------
         displayEndDate = findViewById(R.id.term_edit_end_text);
-        displayEndDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                int year = endCalendar.get(Calendar.YEAR);
-//                int month = endCalendar.get(Calendar.MONTH);
-//                int day = endCalendar.get(Calendar.DAY_OF_MONTH);
-                int year = endLocalDate.getYear();
-                int month = endLocalDate.getMonthValue();
-                int day = endLocalDate.getDayOfMonth();
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        EditTermActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog,
-                        endDateSetListener,
-                        year,
-                        month,
-                        day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-
-        endDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                endCalendar.set(Calendar.YEAR, year);
-                endCalendar.set(Calendar.MONTH, month);
-                endCalendar.set(Calendar.DAY_OF_MONTH, day);
-                updateEndDateLabel();
-            }
-        };
+        endCalendar = Calendar.getInstance();
+        int endYear = endLocalDate.getYear();
+        int endMonth = endLocalDate.getMonthValue();
+        int endDay = endLocalDate.getDayOfMonth();
+        endCalendar.set(Calendar.YEAR, endYear);
+        endCalendar.set(Calendar.MONTH, endMonth);
+        endCalendar.set(Calendar.DAY_OF_MONTH, endDay);
+        endCalendar = DateConverter.onClickEndDate(context, displayEndDate, endCalendar);
     }
 
-    private void updateStartDateLabel() {
-        displayStartDate.setText(simpleDateFormat.format(startCalendar.getTime()));
-    }
-
-    private void updateEndDateLabel() {
-        displayEndDate.setText(simpleDateFormat.format(endCalendar.getTime()));
-    }
 
     public void add_term_save(View view) {
+        String title = titleText.getText().toString();
+        Date startDate = startCalendar.getTime();
+        Date endDate = endCalendar.getTime();
+        TermEntity updateTerm = new TermEntity(termId, title, startDate, endDate);
+        repository.update(updateTerm);
+
+        Intent intent = new Intent(this, TermsDetailActivity.class);
+        intent.putExtra("termId", termId);
+        intent.putExtra("termName", title);
+        intent.putExtra("startDate", simpleDateFormat.format(startDate));
+        intent.putExtra("endDate", simpleDateFormat.format(endDate));
+        startActivity(intent);
     }
 }
