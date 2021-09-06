@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ericmatelyan_schoolmobileapp" >
+    package="com.ericmatelyan_schoolmobileapp">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EricMatelyanSchoolMobileApp" >
+        android:theme="@style/Theme.EricMatelyanSchoolMobileApp">
+        <activity
+            android:name=".UI.EditCourseActivity"
+            android:exported="true"
+            android:label="Edit Course"
+            android:parentActivityName=".UI.CourseDetailsActivity"/>
         <activity
             android:name=".UI.CourseDetailsActivity"
             android:exported="true"
@@ -47,7 +52,7 @@
         <activity
             android:name=".UI.MainActivity"
             android:exported="true"
-            android:label="Home" >
+            android:label="Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
