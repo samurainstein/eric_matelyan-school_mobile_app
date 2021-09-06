@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
-import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
@@ -42,11 +41,15 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
                     startDateText = DateConverter.dateToString(current.getStartDate());
                     endDateText = DateConverter.dateToString(current.getEndDate());
-                    Intent intent = new Intent(context, TermsDetailActivity.class);
+                    Intent intent = new Intent(context, CourseDetailsActivity.class);
                     intent.putExtra("courseId", current.getCourseId());
                     intent.putExtra("courseName", current.getCourseName());
                     intent.putExtra("startDate", startDateText);
                     intent.putExtra("endDate", endDateText);
+                    intent.putExtra("status", current.getStatus());
+                    intent.putExtra("instName", current.getInstructorName());
+                    intent.putExtra("instPhone", current.getInstructorPhone());
+                    intent.putExtra("instEmail", current.getInstructorEmail());
                     context.startActivity(intent);
                 }
             });
@@ -72,7 +75,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
             holder.courseItemView.setText(current.getCourseName());
         }
         else {
-            holder.courseItemView.setText("No Term Name");
+            holder.courseItemView.setText("No Course Name");
         }
     }
 
