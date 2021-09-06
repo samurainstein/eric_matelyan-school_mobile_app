@@ -15,7 +15,7 @@ import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
 import java.util.Date;
 
-public class TermsDetailActivity extends AppCompatActivity {
+public class TermDetailsActivity extends AppCompatActivity {
 
     private int termId;
     private String termName;
@@ -29,7 +29,7 @@ public class TermsDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_terms_detail);
+        setContentView(R.layout.activity_term_details);
 
         repository = new SchoolCalendarRepo(getApplication());
 
