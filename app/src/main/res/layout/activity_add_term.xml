@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/term_add_start_label"
-            android:text="@string/term_start"
+            android:text="@string/start_date"
             android:layout_below="@id/term_add_title_text"
             style="@style/itemLabel" />
 
@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/term_add_end_label"
-            android:text="@string/term_end"
+            android:text="@string/end_date"
             android:layout_below="@id/term_add_start_text"
             style="@style/itemLabel" />
 
