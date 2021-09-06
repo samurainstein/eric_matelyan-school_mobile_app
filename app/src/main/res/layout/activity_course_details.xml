@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.CourseDetailsActivity">
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/course_details_title_label"
+            android:text="@string/course_title"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/course_details_title_text"
+            android:layout_below="@id/course_details_title_label"
+            style="@style/itemEdit"/>
+
+        <TextView
+            android:id="@+id/course_details_start_label"
+            android:text="@string/start_date"
+            android:layout_below="@id/course_details_title_text"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/course_details_start_text"
+            android:layout_below="@id/course_details_start_label"
+            style="@style/itemEdit" />
+
+        <TextView
+            android:id="@+id/course_details_end_label"
+            android:text="@string/end_date"
+            android:layout_below="@id/course_details_start_text"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/course_details_end_text"
+            android:layout_below="@id/course_details_end_label"
+            style="@style/itemEdit" />
+
+        <TextView
+            android:id="@+id/course_details_status_label"
+            android:text="@string/course_status"
+            android:layout_below="@id/course_details_end_text"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/course_details_status_text"
+            android:layout_below="@id/course_details_status_label"
+            style="@style/itemEdit" />
+
+        <TextView
+            android:id="@+id/course_details_inst_name_label"
+            android:text="@string/course_inst_name"
+            android:layout_below="@id/course_details_status_text"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/course_details_inst_name_text"
+            android:layout_below="@id/course_details_inst_name_label"
+            style="@style/itemEdit" />
+
+        <TextView
+            android:id="@+id/course_details_inst_phone_label"
+            android:text="@string/course_inst_phone"
+            android:layout_below="@id/course_details_inst_name_text"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/course_details_inst_phone_text"
+            android:layout_below="@id/course_details_inst_phone_label"
+            style="@style/itemEdit" />
+
+        <TextView
+            android:id="@+id/course_details_inst_email_label"
+            android:text="@string/course_inst_email"
+            android:layout_below="@id/course_details_inst_phone_text"
+            style="@style/itemLabel" />
+
+        <TextView
+            android:id="@+id/course_details_inst_email_text"
+            android:layout_below="@id/course_details_inst_email_label"
+            style="@style/itemEdit" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
