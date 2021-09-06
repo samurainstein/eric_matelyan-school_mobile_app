@@ -2,12 +2,19 @@ package com.ericmatelyan_schoolmobileapp.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
+import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
+import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
+import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
+
+import java.util.Date;
 
 public class CourseDetailsActivity extends AppCompatActivity {
 
@@ -68,5 +75,48 @@ public class CourseDetailsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.editmenu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home_menu_item:
+                Intent homeIntent = new Intent(this, MainActivity.class);
+                startActivity(homeIntent);
+                return true;
+
+            case R.id.edit_menu_item:
+                Intent editIntent = new Intent(this, EditCourseActivity.class);
+                editIntent.putExtra("courseId", courseId);
+                editIntent.putExtra("courseName", courseName);
+                editIntent.putExtra("startDate", startDate);
+                editIntent.putExtra("endDate", endDate);
+                editIntent.putExtra("status", status);
+                editIntent.putExtra("instName", instName);
+                editIntent.putExtra("instPhone", instPhone);
+                editIntent.putExtra("instEmail", instEmail);
+                startActivity(editIntent);
+                return true;
+
+            case R.id.delete_menu_item:
+                Date startDateClass = DateConverter.stringToDate(startDate);
+                Date endDateClass = DateConverter.stringToDate(endDate);
+                CourseEntity deleteCourse = new CourseEntity(
+                        courseId,
+                        courseName,
+                        startDateClass,
+                        endDateClass,
+                        status,
+                        instName,
+                        instPhone,
+                        instEmail);
+                repository.delete(deleteCourse);
+                Intent deleteIntent = new Intent(this, CoursesActivity.class);
+                startActivity(deleteIntent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
