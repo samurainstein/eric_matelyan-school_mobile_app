@@ -101,7 +101,7 @@ public class EditTermActivity extends AppCompatActivity {
         TermEntity updateTerm = new TermEntity(termId, title, startDate, endDate);
         repository.update(updateTerm);
 
-        Intent intent = new Intent(this, TermsDetailActivity.class);
+        Intent intent = new Intent(this, TermDetailsActivity.class);
         intent.putExtra("termId", termId);
         intent.putExtra("termName", title);
         intent.putExtra("startDate", simpleDateFormat.format(startDate));
