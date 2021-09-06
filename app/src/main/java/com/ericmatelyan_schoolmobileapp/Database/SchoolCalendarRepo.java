@@ -96,6 +96,17 @@ public class SchoolCalendarRepo {
         }
     }
 
+    public void delete(CourseEntity course) {
+        SchoolCalendarDB.databaseExecutor.execute(() -> {
+            courseDao.delete(course);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<AssignmentEntity> getAllAssignments() {
         SchoolCalendarDB.databaseExecutor.execute(()-> {
             allAssignments = assignmentDAO.getAllAssignments();
