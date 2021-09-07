@@ -18,4 +18,5 @@
     <string name="course_inst_name">Instructor Name</string>
     <string name="course_inst_phone">Instructor Phone</string>
     <string name="course_inst_email">Instructor Email</string>
+    <string name="term_details_assoc_courses_label">Courses</string>
 </resources>
