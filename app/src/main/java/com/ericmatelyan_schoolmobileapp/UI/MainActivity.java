@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SchoolCalendarRepo repository = new SchoolCalendarRepo(getApplication());
 //        TermEntity term1 = new TermEntity(IdManager.getNextTermId(),  "Term 1", testDate, testDate);
 //        repository.insert(term1);
     }
