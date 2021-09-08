@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
+import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.IdManager;
 
@@ -30,7 +31,7 @@ public class CoursesActivity extends AppCompatActivity {
                     "Test Course",
                     new Date(),
                     new Date(),
-                    "Status",
+                    "In Progress",
                     "Instructor Name",
                     "Instructor Phone",
                     "Instructor Email",
