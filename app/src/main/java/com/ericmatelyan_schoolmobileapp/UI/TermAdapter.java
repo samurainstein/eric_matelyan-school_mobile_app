@@ -25,8 +25,6 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
     class TermViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView termItemView;
-        private String startDateText;
-        private String endDateText;
 
 
         private TermViewHolder(View itemView) {
@@ -39,8 +37,6 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
                     int position = getAdapterPosition();
                     final TermEntity current = listTerms.get(position);
 
-                    startDateText = DateConverter.dateToString(current.getStartDate());
-                    endDateText = DateConverter.dateToString(current.getEndDate());
                     Intent intent = new Intent(context, TermDetailsActivity.class);
                     intent.putExtra("term", current);
                     context.startActivity(intent);
