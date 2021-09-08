@@ -1,6 +1,8 @@
 package com.ericmatelyan_schoolmobileapp.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,16 +11,17 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
+import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
 import java.util.Date;
+import java.util.List;
 
 public class TermDetailsActivity extends AppCompatActivity {
 
     private TermEntity term;
-    private int termId;
     private String termName;
     private Date startDateClass;
     private Date endDateClass;
@@ -28,6 +31,7 @@ public class TermDetailsActivity extends AppCompatActivity {
     private TextView startText;
     private TextView endText;
     private SchoolCalendarRepo repository;
+    List<CourseEntity> assocCourses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,6 @@ public class TermDetailsActivity extends AppCompatActivity {
         repository = new SchoolCalendarRepo(getApplication());
 
         term = (TermEntity) getIntent().getSerializableExtra("term");
-        termId = term.getTermId();
         termName = term.getTermName();
         startDateClass = term.getStartDate();
         endDateClass = term.getEndDate();
@@ -51,6 +54,17 @@ public class TermDetailsActivity extends AppCompatActivity {
         titleText.setText(termName);
         startText.setText(startDate);
         endText.setText(endDate);
+
+        //FIX THIS:
+        assocCourses = repository.getAllCourses();
+
+
+        RecyclerView recyclerView = findViewById(R.id.assoc_courses_recycler);
+        final CourseAdapter courseAdapter = new CourseAdapter(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setAdapter(courseAdapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        courseAdapter.setCourses(assocCourses);
     }
 
     @Override
