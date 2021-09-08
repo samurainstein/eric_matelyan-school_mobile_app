@@ -6,18 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".UI.EditTermActivity">
 
-    <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/term_edit_title_label"
@@ -55,10 +50,8 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/edit_term_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save_term_button"
