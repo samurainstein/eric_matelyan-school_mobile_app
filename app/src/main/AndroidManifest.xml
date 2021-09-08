@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EricMatelyanSchoolMobileApp">
+
+<!--        FIX THIS: Back Button Crashes.  Calling onCreate() again?-->
         <activity
             android:name=".UI.EditCourseActivity"
             android:exported="true"
@@ -19,11 +21,13 @@
             android:exported="true"
             android:label="Course Details"
             android:parentActivityName=".UI.CoursesActivity" />
+
+<!--        FIX THIS: Back Button Crashes.  Calling onCreate() again?-->
         <activity
             android:name=".UI.EditTermActivity"
             android:exported="true"
             android:label="Edit Term"
-            android:parentActivityName=".UI.AddTermActivity" />
+            android:parentActivityName=".UI.TermDetailsActivity" />
         <activity
             android:name=".UI.AddTermActivity"
             android:exported="true"
