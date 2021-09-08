@@ -9,6 +9,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 
 import java.util.List;
@@ -26,4 +27,7 @@ public interface TermDAO {
 
     @Query("SELECT * FROM term_table ORDER BY termId")
     List<TermEntity> getAllTerms();
+
+    @Query("SELECT * FROM course_table WHERE assocTerm = :term;")
+    List<CourseEntity> getAssociatedCourses(String term);
 }
