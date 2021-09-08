@@ -39,8 +39,6 @@ public class EditTermActivity extends AppCompatActivity {
     private Calendar endCalendar;
     Date startDateClass;
     Date endDateClass;
-    String dateFormat = "MM/dd/yy";
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat, Locale.US);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,10 +102,7 @@ public class EditTermActivity extends AppCompatActivity {
         repository.update(updateTerm);
 
         Intent intent = new Intent(this, TermDetailsActivity.class);
-        intent.putExtra("termId", termId);
-        intent.putExtra("termName", title);
-        intent.putExtra("startDate", simpleDateFormat.format(startDate));
-        intent.putExtra("endDate", simpleDateFormat.format(endDate));
+        intent.putExtra("term", updateTerm);
         startActivity(intent);
     }
 }
