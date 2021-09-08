@@ -17,9 +17,10 @@ public class CourseEntity {
     private String instructorName;
     private String instructorPhone;
     private String instructorEmail;
+    private String assocTerm;
 
     public CourseEntity(int courseId, String courseName, Date startDate, Date endDate, String status,
-                        String instructorName, String instructorPhone, String instructorEmail) {
+                        String instructorName, String instructorPhone, String instructorEmail, String assocTerm) {
         this.courseId = courseId;
         this.courseName = courseName;
         this.startDate = startDate;
@@ -28,6 +29,7 @@ public class CourseEntity {
         this.instructorName = instructorName;
         this.instructorPhone = instructorPhone;
         this.instructorEmail = instructorEmail;
+        this.assocTerm = assocTerm;
     }
 
     public int getCourseId() {
@@ -92,6 +94,14 @@ public class CourseEntity {
 
     public void setInstructorEmail(String instructorEmail) {
         this.instructorEmail = instructorEmail;
+    }
+
+    public String getAssocTerm() {
+        return assocTerm;
+    }
+
+    public void setAssocTerm(String assocTerm) {
+        this.assocTerm = assocTerm;
     }
 
     @Override
