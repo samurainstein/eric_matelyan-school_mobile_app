@@ -22,36 +22,36 @@
             <TextView
                 android:id="@+id/term_edit_title_label"
                 android:text="@string/term_title"
-                style="@style/itemLabel" />
+                style="@style/termLabel" />
 
             <EditText
                 android:id="@+id/term_edit_title_text"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                style="@style/itemEdit"/>
+                style="@style/termText"/>
 
             <TextView
                 android:id="@+id/term_edit_start_label"
                 android:text="@string/start_date"
 
-                style="@style/itemLabel" />
+                style="@style/termLabel" />
 
             <TextView
                 android:id="@+id/term_edit_start_text"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                style="@style/itemEdit" />
+                style="@style/termText" />
 
             <TextView
                 android:id="@+id/term_edit_end_label"
                 android:text="@string/end_date"
-                style="@style/itemLabel" />
+                style="@style/termLabel" />
 
             <TextView
                 android:id="@+id/term_edit_end_text"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                style="@style/itemEdit" />
+                style="@style/termText" />
 
         </LinearLayout>
 
