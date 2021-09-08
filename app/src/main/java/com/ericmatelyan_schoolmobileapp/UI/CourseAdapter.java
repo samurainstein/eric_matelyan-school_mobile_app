@@ -25,9 +25,6 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     class CourseViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView courseItemView;
-        private String startDateText;
-        private String endDateText;
-
 
         private CourseViewHolder(View itemView) {
             super(itemView);
@@ -39,18 +36,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                     int position = getAdapterPosition();
                     final CourseEntity current = listCourses.get(position);
 
-                    startDateText = DateConverter.dateToString(current.getStartDate());
-                    endDateText = DateConverter.dateToString(current.getEndDate());
                     Intent intent = new Intent(context, CourseDetailsActivity.class);
-                    intent.putExtra("courseId", current.getCourseId());
-                    intent.putExtra("courseName", current.getCourseName());
-                    intent.putExtra("startDate", startDateText);
-                    intent.putExtra("endDate", endDateText);
-                    intent.putExtra("status", current.getStatus());
-                    intent.putExtra("instName", current.getInstructorName());
-                    intent.putExtra("instPhone", current.getInstructorPhone());
-                    intent.putExtra("instEmail", current.getInstructorEmail());
-                    intent.putExtra("assocTerm", current.getAssocTerm());
+                    intent.putExtra("course", current);
                     context.startActivity(intent);
                 }
             });
