@@ -42,10 +42,7 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
                     startDateText = DateConverter.dateToString(current.getStartDate());
                     endDateText = DateConverter.dateToString(current.getEndDate());
                     Intent intent = new Intent(context, TermDetailsActivity.class);
-                    intent.putExtra("termId", current.getTermId());
-                    intent.putExtra("termName", current.getTermName());
-                    intent.putExtra("startDate", startDateText);
-                    intent.putExtra("endDate", endDateText);
+                    intent.putExtra("term", current);
                     context.startActivity(intent);
                 }
             });
