@@ -17,8 +17,12 @@ import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
+import com.ericmatelyan_schoolmobileapp.Utility.SpinnerManager;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +34,7 @@ public class EditCourseActivity extends AppCompatActivity {
     private CourseEntity course;
     private int courseId;
     private String courseName;
+    private String assocTerm;
     private String startDate;
     private String endDate;
     private Date startDateClass;
@@ -46,14 +51,14 @@ public class EditCourseActivity extends AppCompatActivity {
     private TextView displayEndDate;
     private Calendar startCalendar;
     private Calendar endCalendar;
+    private Spinner assocTermSpinner;
+    private Spinner statusSpinner;
     private EditText statusText;
     private EditText instNameText;
     private EditText instPhoneText;
     private EditText instEmailText;
 
     private SchoolCalendarRepo repository;
-    private TermEntity assocTermEntity;
-    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +68,11 @@ public class EditCourseActivity extends AppCompatActivity {
         repository = new SchoolCalendarRepo(getApplication());
         course = (CourseEntity) getIntent().getSerializableExtra("course");
         courseName = course.getCourseName();
-        //FIX THIS: course.getAssocTerm()     Entity Value
-        assocTermEntity = repository.getAllTerms().get(0);
+        assocTerm = course.getAssocTerm();
         startDateClass = course.getStartDate();
         endDateClass = course.getEndDate();
         startDate = DateConverter.dateToString(startDateClass);
         endDate = DateConverter.dateToString(endDateClass);
-        //FIX THIS: Change to ENUM;
         status = course.getStatus();
         instName = course.getInstructorName();
         instPhone = course.getInstructorPhone();
@@ -78,8 +81,6 @@ public class EditCourseActivity extends AppCompatActivity {
         titleText = findViewById(R.id.course_edit_title_text);
         startText = findViewById(R.id.course_edit_start_text);
         endText = findViewById(R.id.course_edit_end_text);
-//        FIX THIS: change to spinner;
-        statusText = findViewById(R.id.course_edit_status_text);
         instNameText = findViewById(R.id.course_edit_inst_name_text);
         instPhoneText = findViewById(R.id.course_edit_inst_phone_text);
         instEmailText = findViewById(R.id.course_edit_inst_email_text);
@@ -87,8 +88,6 @@ public class EditCourseActivity extends AppCompatActivity {
         titleText.setText(courseName);
         startText.setText(startDate);
         endText.setText(endDate);
-        //FIX THIS: change to spinner
-        statusText.setText(status);
         instNameText.setText(instName);
         instPhoneText.setText(instPhone);
         instEmailText.setText(instEmail);
@@ -118,28 +117,19 @@ public class EditCourseActivity extends AppCompatActivity {
         endCalendar.set(Calendar.DAY_OF_MONTH, endDay);
         endCalendar = DateConverter.onClickEndDate(context, displayEndDate, endCalendar);
 
+        //Spinners---------------
+        assocTermSpinner = findViewById(R.id.course_edit_assoc_term_spinner);
+        statusSpinner = findViewById(R.id.course_edit_status_spinner);
+        List<String> statusStrings = Arrays.asList(getResources().getStringArray(R.array.status_array));
         List<TermEntity> allTerms = repository.getAllTerms();
-        spinner = findViewById(R.id.course_edit_assoc_term_spinner);
-        ArrayAdapter<TermEntity> adapter = new ArrayAdapter<TermEntity>(this,
-                android.R.layout.simple_spinner_item, allTerms);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        if (assocTermEntity != null) {
-            int spinnerPosition = adapter.getPosition(assocTermEntity);
-            spinner.setSelection(spinnerPosition);
+        List<String> allTermsStrings = new ArrayList<>();
+        for(TermEntity term : allTerms) {
+            allTermsStrings.add(term.getTermName());
         }
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                TermEntity term = (TermEntity) parent.getSelectedItem();
-//                displayUserData(term);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        ArrayAdapter<String> termArrayAdapter = SpinnerManager.setSpinnerItems(context, assocTermSpinner, allTermsStrings);
+        SpinnerManager.setSpinnerSelection(assocTermSpinner, assocTerm, termArrayAdapter);
+        ArrayAdapter<String> statusArrayAdapter = SpinnerManager.setSpinnerItems(context, statusSpinner, statusStrings);
+        SpinnerManager.setSpinnerSelection(statusSpinner, status, statusArrayAdapter);
 
     }
 
@@ -147,12 +137,10 @@ public class EditCourseActivity extends AppCompatActivity {
         //FIX THIS: Make sure all fields are filled in.
         courseId = course.getCourseId();
         String title = titleText.getText().toString();
-        //FIX THIS: Change assocTerm to entity
-        String assocTerm = assocTermEntity.getTermName();
+        assocTerm = assocTermSpinner.toString();
         Date startDate = startCalendar.getTime();
         Date endDate = endCalendar.getTime();
-        //FIX THIS: change status to Enum
-        status = statusText.getText().toString();
+        status = statusSpinner.toString();
         instName = instNameText.getText().toString();
         instPhone = instPhoneText.getText().toString();
         instEmail = instEmailText.getText().toString();
