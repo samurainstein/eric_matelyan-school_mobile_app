@@ -13,102 +13,134 @@
         android:gravity="center"
         tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/course_edit_title_label"
-            android:text="@string/course_title"
-            style="@style/courseLabel" />
-
-        <EditText
-            android:id="@+id/course_edit_title_text"
-            style="@style/courseText"/>
-
-        <TextView
-            android:id="@+id/course_edit_assoc_term_label"
-            android:text="@string/associated_term"
-            style="@style/courseLabel" />
-
-        <Spinner
-            android:id="@+id/course_edit_assoc_term_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
         <LinearLayout
-            android:id="@+id/course_edit_date_label_lin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/course_edit_title_label"
+                android:text="@string/course_title"
+                style="@style/courseLabel" />
+
+            <TextView
+                android:id="@+id/course_edit_assoc_term_label"
+                android:text="@string/associated_term"
+                style="@style/courseLabel" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/course_edit_title_text"
+                style="@style/courseText"/>
+
+            <Spinner
+                android:id="@+id/course_edit_assoc_term_spinner"
+                style="@style/courseSpinner"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/course_edit_start_label"
                 android:text="@string/start_date"
-                android:layout_width="160dp"
                 style="@style/courseLabel" />
 
             <TextView
                 android:id="@+id/course_edit_end_label"
                 android:text="@string/end_date"
-                android:layout_width="160dp"
                 style="@style/courseLabel" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/course_edit_date_text_lin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:orientation="horizontal">
-
 
             <TextView
                 android:id="@+id/course_edit_start_text"
-                android:layout_width="160dp"
                 style="@style/courseText" />
 
             <TextView
                 android:id="@+id/course_edit_end_text"
-                android:layout_width="160dp"
                 style="@style/courseText" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/course_edit_status_label"
-            android:text="@string/course_status"
-            style="@style/courseLabel" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-<!--        FIX THIS: Change to dropdown-->
-        <EditText
-            android:id="@+id/course_edit_status_text"
-            style="@style/courseText" />
+            <TextView
+                android:id="@+id/course_edit_status_label"
+                android:text="@string/course_status"
+                style="@style/courseLabel" />
 
-        <TextView
-            android:id="@+id/course_edit_inst_name_label"
-            android:text="@string/course_inst_name"
-            style="@style/courseLabel" />
+            <TextView
+                android:id="@+id/course_edit_inst_name_label"
+                android:text="@string/course_inst_name"
+                style="@style/courseLabel" />
 
-        <EditText
-            android:id="@+id/course_edit_inst_name_text"
-            style="@style/courseText" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/course_edit_inst_phone_label"
-            android:text="@string/course_inst_phone"
-            style="@style/courseLabel" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/course_edit_inst_phone_text"
-            style="@style/courseText" />
+            <Spinner
+                android:id="@+id/course_edit_status_spinner"
+                style="@style/courseSpinner"/>
 
-        <TextView
-            android:id="@+id/course_edit_inst_email_label"
-            android:text="@string/course_inst_email"
-            style="@style/courseLabel" />
+            <EditText
+                android:id="@+id/course_edit_inst_name_text"
+                style="@style/courseText" />
 
-        <EditText
-            android:id="@+id/course_edit_inst_email_text"
-            style="@style/courseText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/course_edit_inst_phone_label"
+                android:text="@string/course_inst_phone"
+                style="@style/courseLabel" />
+
+            <TextView
+                android:id="@+id/course_edit_inst_email_label"
+                android:text="@string/course_inst_email"
+                style="@style/courseLabel" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/course_edit_inst_phone_text"
+                style="@style/courseText" />
+
+            <EditText
+                android:id="@+id/course_edit_inst_email_text"
+                style="@style/courseText" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
