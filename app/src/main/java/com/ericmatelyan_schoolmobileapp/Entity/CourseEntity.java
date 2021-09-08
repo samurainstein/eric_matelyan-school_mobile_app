@@ -3,11 +3,12 @@ package com.ericmatelyan_schoolmobileapp.Entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
 @Entity (tableName = "course_table")
-public class CourseEntity {
+public class CourseEntity implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int courseId;
     private String courseName;
