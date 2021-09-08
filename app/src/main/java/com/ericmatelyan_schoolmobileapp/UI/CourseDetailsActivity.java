@@ -103,19 +103,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
                 return true;
 
             case R.id.delete_menu_item:
-                Date startDateClass = DateConverter.stringToDate(startDate);
-                Date endDateClass = DateConverter.stringToDate(endDate);
-                CourseEntity deleteCourse = new CourseEntity(
-                    courseId,
-                    courseName,
-                    startDateClass,
-                    endDateClass,
-                    status,
-                    instName,
-                    instPhone,
-                    instEmail,
-                    assocTerm);
-                repository.delete(deleteCourse);
+                repository.delete(course);
                 Intent deleteIntent = new Intent(this, CoursesActivity.class);
                 startActivity(deleteIntent);
                 return true;
