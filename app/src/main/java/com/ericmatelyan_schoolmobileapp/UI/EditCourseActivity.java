@@ -47,13 +47,10 @@ public class EditCourseActivity extends AppCompatActivity {
     private EditText titleText;
     private TextView startText;
     private TextView endText;
-    private TextView displayStartDate;
-    private TextView displayEndDate;
     private Calendar startCalendar;
     private Calendar endCalendar;
     private Spinner assocTermSpinner;
     private Spinner statusSpinner;
-    private EditText statusText;
     private EditText instNameText;
     private EditText instPhoneText;
     private EditText instEmailText;
@@ -94,7 +91,7 @@ public class EditCourseActivity extends AppCompatActivity {
 
         //Start Date----------------
         LocalDate startLocalDate = DateConverter.dateToLocalDate(startDateClass);
-        displayStartDate = findViewById(R.id.course_edit_start_text);
+        startText = findViewById(R.id.course_edit_start_text);
         startCalendar = Calendar.getInstance();
         int startYear = startLocalDate.getYear();
         int startMonth = startLocalDate.getMonthValue() - 1;
@@ -102,12 +99,11 @@ public class EditCourseActivity extends AppCompatActivity {
         startCalendar.set(Calendar.YEAR, startYear);
         startCalendar.set(Calendar.MONTH, startMonth);
         startCalendar.set(Calendar.DAY_OF_MONTH, startDay);
-        startCalendar = DateConverter.onClickStartDate(context, displayStartDate, startCalendar);
+        startCalendar = DateConverter.onClickStartDate(context, startText, startCalendar);
 
 
         //End Date---------------------
         LocalDate endLocalDate = DateConverter.dateToLocalDate(endDateClass);
-        displayEndDate = findViewById(R.id.course_edit_end_text);
         endCalendar = Calendar.getInstance();
         int endYear = endLocalDate.getYear();
         int endMonth = endLocalDate.getMonthValue() - 1;
@@ -115,7 +111,7 @@ public class EditCourseActivity extends AppCompatActivity {
         endCalendar.set(Calendar.YEAR, endYear);
         endCalendar.set(Calendar.MONTH, endMonth);
         endCalendar.set(Calendar.DAY_OF_MONTH, endDay);
-        endCalendar = DateConverter.onClickEndDate(context, displayEndDate, endCalendar);
+        endCalendar = DateConverter.onClickEndDate(context, endText, endCalendar);
 
         //Spinners---------------
         assocTermSpinner = findViewById(R.id.course_edit_assoc_term_spinner);
@@ -137,10 +133,10 @@ public class EditCourseActivity extends AppCompatActivity {
         //FIX THIS: Make sure all fields are filled in.
         courseId = course.getCourseId();
         String title = titleText.getText().toString();
-        assocTerm = assocTermSpinner.toString();
+        assocTerm = assocTermSpinner.getSelectedItem().toString();
         Date startDate = startCalendar.getTime();
         Date endDate = endCalendar.getTime();
-        status = statusSpinner.toString();
+        status = statusSpinner.getSelectedItem().toString();
         instName = instNameText.getText().toString();
         instPhone = instPhoneText.getText().toString();
         instEmail = instEmailText.getText().toString();
