@@ -24,6 +24,7 @@ public class EditTermActivity extends AppCompatActivity {
 
     private static final String TAG = "EditTermActivity";
     private Context context = EditTermActivity.this;
+    private TermEntity term;
     private int termId;
     private String termName;
     private String startDate;
@@ -47,10 +48,13 @@ public class EditTermActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_term);
 
         //Set Fields-----------------------
-        termId = getIntent().getIntExtra("termId", -1);
-        termName = getIntent().getStringExtra("termName");
-        startDate = getIntent().getStringExtra("startDate");
-        endDate = getIntent().getStringExtra("endDate");
+        term = (TermEntity) getIntent().getSerializableExtra("term");
+        termId = term.getTermId();
+        termName = term.getTermName();
+        startDateClass = term.getStartDate();
+        endDateClass = term.getEndDate();
+        startDate = DateConverter.dateToString(startDateClass);
+        endDate = DateConverter.dateToString(endDateClass);
 
         titleText = findViewById(R.id.term_edit_title_text);
         startText = findViewById(R.id.term_edit_start_text);
@@ -60,10 +64,8 @@ public class EditTermActivity extends AppCompatActivity {
         startText.setText(startDate);
         endText.setText(endDate);
 
-        startDateClass = DateConverter.stringToDate(startDate);
-        LocalDate startLocalDate = DateConverter.dateToLocalDate(startDateClass);
 
-        endDateClass = DateConverter.stringToDate(endDate);
+        LocalDate startLocalDate = DateConverter.dateToLocalDate(startDateClass);
         LocalDate endLocalDate = DateConverter.dateToLocalDate(endDateClass);
 
         repository = new SchoolCalendarRepo(getApplication());
@@ -84,7 +86,7 @@ public class EditTermActivity extends AppCompatActivity {
         displayEndDate = findViewById(R.id.term_edit_end_text);
         endCalendar = Calendar.getInstance();
         int endYear = endLocalDate.getYear();
-        int endMonth = endLocalDate.getMonthValue();
+        int endMonth = endLocalDate.getMonthValue() - 1;
         int endDay = endLocalDate.getDayOfMonth();
         endCalendar.set(Calendar.YEAR, endYear);
         endCalendar.set(Calendar.MONTH, endMonth);
