@@ -55,9 +55,7 @@ public class TermDetailsActivity extends AppCompatActivity {
         startText.setText(startDate);
         endText.setText(endDate);
 
-        //FIX THIS:
-        assocCourses = repository.getAllCourses();
-
+        assocCourses = repository.getAssociatedCourses(termName);
 
         RecyclerView recyclerView = findViewById(R.id.assoc_courses_recycler);
         final CourseAdapter courseAdapter = new CourseAdapter(this);
