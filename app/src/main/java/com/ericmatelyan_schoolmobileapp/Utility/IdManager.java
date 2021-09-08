@@ -2,6 +2,7 @@ package com.ericmatelyan_schoolmobileapp.Utility;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarDB;
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
+import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 
 import java.util.List;
@@ -17,6 +18,14 @@ public abstract class IdManager {
         TermEntity lastTerm = allTerms.get(lastIndex);
         int lastTermId = lastTerm.getTermId();
         nextTermId = lastTermId;
+    }
+
+    public static void setNextCourseId(SchoolCalendarRepo repository) {
+        List<CourseEntity> allCourses = repository.getAllCourses();
+        int lastIndex = allCourses.size() - 1;
+        CourseEntity lastCourse = allCourses.get(lastIndex);
+        int lastCourseId = lastCourse.getCourseId();
+        nextCourseId = lastCourseId;
     }
 
     public static int getNextTermId() {
