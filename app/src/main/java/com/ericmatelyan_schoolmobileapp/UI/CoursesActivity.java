@@ -1,6 +1,8 @@
 package com.ericmatelyan_schoolmobileapp.UI;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -45,5 +47,11 @@ public class CoursesActivity extends AppCompatActivity {
         recyclerView.setAdapter(courseAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
         courseAdapter.setCourses(allCourses);
+    }
+
+    public void addCourse(View view) {
+        Intent intent = new Intent(this, AddCourseActivity.class);
+        startActivity(intent);
+
     }
 }
