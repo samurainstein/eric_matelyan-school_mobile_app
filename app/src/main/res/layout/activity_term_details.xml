@@ -45,6 +45,21 @@
             android:layout_below="@id/term_details_end_label"
             style="@style/itemEdit" />
 
+        <TextView
+            android:id="@+id/term_details_assoc_courses_label"
+            android:text="@string/term_details_assoc_courses_label"
+            android:layout_below="@id/term_details_end_text"
+            style="@style/itemLabel" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/assoc_courses_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/term_details_assoc_courses_label"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
