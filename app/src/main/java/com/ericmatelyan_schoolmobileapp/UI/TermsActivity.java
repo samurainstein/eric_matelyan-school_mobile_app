@@ -9,12 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
-import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.IdManager;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
