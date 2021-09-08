@@ -17,8 +17,11 @@ import java.util.Date;
 
 public class TermDetailsActivity extends AppCompatActivity {
 
+    private TermEntity term;
     private int termId;
     private String termName;
+    private Date startDateClass;
+    private Date endDateClass;
     private String startDate;
     private String endDate;
     private TextView titleText;
@@ -33,10 +36,13 @@ public class TermDetailsActivity extends AppCompatActivity {
 
         repository = new SchoolCalendarRepo(getApplication());
 
-        termId = getIntent().getIntExtra("termId", -1);
-        termName = getIntent().getStringExtra("termName");
-        startDate = getIntent().getStringExtra("startDate");
-        endDate = getIntent().getStringExtra("endDate");
+        term = (TermEntity) getIntent().getSerializableExtra("term");
+        termId = term.getTermId();
+        termName = term.getTermName();
+        startDateClass = term.getStartDate();
+        endDateClass = term.getEndDate();
+        startDate = DateConverter.dateToString(startDateClass);
+        endDate = DateConverter.dateToString(endDateClass);
 
         titleText = findViewById(R.id.term_details_title_text);
         startText = findViewById(R.id.term_details_start_text);
@@ -63,18 +69,12 @@ public class TermDetailsActivity extends AppCompatActivity {
 
             case R.id.edit_menu_item:
                 Intent editIntent = new Intent(this, EditTermActivity.class);
-                editIntent.putExtra("termId", termId);
-                editIntent.putExtra("termName", termName);
-                editIntent.putExtra("startDate", startDate);
-                editIntent.putExtra("endDate", endDate);
+                editIntent.putExtra("term", term);
                 startActivity(editIntent);
                 return true;
 
             case R.id.delete_menu_item:
-                Date startDateClass = DateConverter.stringToDate(startDate);
-                Date endDateClass = DateConverter.stringToDate(endDate);
-                TermEntity deleteTerm = new TermEntity(termId, termName, startDateClass, endDateClass);
-                repository.delete(deleteTerm);
+                repository.delete(term);
                 Intent deleteIntent = new Intent(this, TermsActivity.class);
                 startActivity(deleteIntent);
                 return true;
