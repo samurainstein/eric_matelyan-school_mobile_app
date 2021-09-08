@@ -9,20 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EricMatelyanSchoolMobileApp">
-
-<!--        FIX THIS: Back Button Crashes.  Calling onCreate() again?-->
+        <activity
+            android:name=".UI.AddCourseActivity"
+            android:exported="true"
+            android:label="Add Course"
+            android:parentActivityName=".UI.CoursesActivity"/>
+        <!-- FIX THIS: Back Button Crashes.  Calling onCreate() again? -->
         <activity
             android:name=".UI.EditCourseActivity"
             android:exported="true"
             android:label="Edit Course"
-            android:parentActivityName=".UI.CourseDetailsActivity"/>
+            android:parentActivityName=".UI.CourseDetailsActivity" />
         <activity
             android:name=".UI.CourseDetailsActivity"
             android:exported="true"
             android:label="Course Details"
-            android:parentActivityName=".UI.CoursesActivity" />
-
-<!--        FIX THIS: Back Button Crashes.  Calling onCreate() again?-->
+            android:parentActivityName=".UI.CoursesActivity" /> <!-- FIX THIS: Back Button Crashes.  Calling onCreate() again? -->
         <activity
             android:name=".UI.EditTermActivity"
             android:exported="true"
