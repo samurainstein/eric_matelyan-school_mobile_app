@@ -16,40 +16,40 @@
         <TextView
             android:id="@+id/term_details_title_label"
             android:text="@string/term_title"
-            style="@style/itemLabel" />
+            style="@style/termLabel" />
 
         <TextView
             android:id="@+id/term_details_title_text"
             android:layout_below="@id/term_details_title_label"
-            style="@style/itemEdit"/>
+            style="@style/termText"/>
 
         <TextView
             android:id="@+id/term_details_start_label"
             android:text="@string/start_date"
             android:layout_below="@id/term_details_title_text"
-            style="@style/itemLabel" />
+            style="@style/termLabel" />
 
         <TextView
             android:id="@+id/term_details_start_text"
             android:layout_below="@id/term_details_start_label"
-            style="@style/itemEdit" />
+            style="@style/termText" />
 
         <TextView
             android:id="@+id/term_details_end_label"
             android:text="@string/end_date"
             android:layout_below="@id/term_details_start_text"
-            style="@style/itemLabel" />
+            style="@style/termLabel" />
 
         <TextView
             android:id="@+id/term_details_end_text"
             android:layout_below="@id/term_details_end_label"
-            style="@style/itemEdit" />
+            style="@style/termText" />
 
         <TextView
             android:id="@+id/term_details_assoc_courses_label"
             android:text="@string/term_details_assoc_courses_label"
             android:layout_below="@id/term_details_end_text"
-            style="@style/itemLabel" />
+            style="@style/termLabel" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/assoc_courses_recycler"
