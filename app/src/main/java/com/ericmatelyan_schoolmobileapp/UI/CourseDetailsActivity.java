@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
@@ -14,7 +16,9 @@ import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CourseDetailsActivity extends AppCompatActivity {
 
@@ -26,6 +30,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
     private String instName;
     private String instPhone;
     private String instEmail;
+    private String assocTerm;
 
     private TextView titleText;
     private TextView startText;
@@ -36,6 +41,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
     private TextView instEmailText;
 
     private SchoolCalendarRepo repository;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
         instName = getIntent().getStringExtra("instName");
         instPhone = getIntent().getStringExtra("instPhone");
         instEmail = getIntent().getStringExtra("instEmail");
+        assocTerm = "Term 1";
 
         titleText = findViewById(R.id.course_details_title_text);
         startText = findViewById(R.id.course_details_start_text);
@@ -69,6 +76,8 @@ public class CourseDetailsActivity extends AppCompatActivity {
         instNameText.setText(instName);
         instPhoneText.setText(instPhone);
         instEmailText.setText(instEmail);
+
+
     }
 
     @Override
@@ -102,14 +111,15 @@ public class CourseDetailsActivity extends AppCompatActivity {
                 Date startDateClass = DateConverter.stringToDate(startDate);
                 Date endDateClass = DateConverter.stringToDate(endDate);
                 CourseEntity deleteCourse = new CourseEntity(
-                        courseId,
-                        courseName,
-                        startDateClass,
-                        endDateClass,
-                        status,
-                        instName,
-                        instPhone,
-                        instEmail);
+                    courseId,
+                    courseName,
+                    startDateClass,
+                    endDateClass,
+                    status,
+                    instName,
+                    instPhone,
+                    instEmail,
+                    assocTerm);
                 repository.delete(deleteCourse);
                 Intent deleteIntent = new Intent(this, CoursesActivity.class);
                 startActivity(deleteIntent);
