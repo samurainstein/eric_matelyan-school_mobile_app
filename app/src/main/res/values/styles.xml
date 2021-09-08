@@ -3,15 +3,27 @@
     <style name="DefaultButton">
         <item name="android:textSize">24sp</item>
     </style>
-    <style name="itemLabel">
+    <style name="termLabel">
         <item name="android:textSize">34sp</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    <style name="itemEdit">
+    <style name="termText">
         <item name="android:textSize">24sp</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+    <style name="courseLabel">
+        <item name="android:textSize">28sp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="courseText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">5dp</item>
     </style>
