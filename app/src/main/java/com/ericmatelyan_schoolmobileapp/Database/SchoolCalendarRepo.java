@@ -20,6 +20,7 @@ public class SchoolCalendarRepo {
     private List<TermEntity> allTerms;
     private List<CourseEntity> allCourses;
     private List<AssignmentEntity> allAssignments;
+    private List<CourseEntity> assocCourses;
 
     public SchoolCalendarRepo(Application application) {
         SchoolCalendarDB database = SchoolCalendarDB.getDatabase(application);
@@ -83,6 +84,18 @@ public class SchoolCalendarRepo {
             e.printStackTrace();
         }
         return allCourses;
+    }
+
+    public List<CourseEntity> getAssociatedCourses(String term) {
+        SchoolCalendarDB.databaseExecutor.execute(()-> {
+            assocCourses = termDao.getAssociatedCourses(term);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return assocCourses;
     }
 
     public void insert(CourseEntity course) {
