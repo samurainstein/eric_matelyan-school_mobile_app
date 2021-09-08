@@ -16,37 +16,37 @@
         <TextView
             android:id="@+id/term_add_title_label"
             android:text="@string/term_title"
-            style="@style/itemLabel" />
+            style="@style/termLabel" />
 
         <EditText
             android:id="@+id/term_add_title_text"
             android:layout_below="@id/term_add_title_label"
             android:hint="@string/add_term_hint"
-            style="@style/itemEdit"/>
+            style="@style/termText"/>
 
         <TextView
             android:id="@+id/term_add_start_label"
             android:text="@string/start_date"
             android:layout_below="@id/term_add_title_text"
-            style="@style/itemLabel" />
+            style="@style/termLabel" />
 
         <TextView
             android:id="@+id/term_add_start_text"
             android:hint="@string/add_term_date_hint"
             android:layout_below="@id/term_add_start_label"
-            style="@style/itemEdit" />
+            style="@style/termText" />
 
         <TextView
             android:id="@+id/term_add_end_label"
             android:text="@string/end_date"
             android:layout_below="@id/term_add_start_text"
-            style="@style/itemLabel" />
+            style="@style/termLabel" />
 
         <TextView
             android:id="@+id/term_add_end_text"
             android:hint="@string/add_term_date_hint"
             android:layout_below="@id/term_add_end_label"
-            style="@style/itemEdit" />
+            style="@style/termText" />
 
     </RelativeLayout>
 
