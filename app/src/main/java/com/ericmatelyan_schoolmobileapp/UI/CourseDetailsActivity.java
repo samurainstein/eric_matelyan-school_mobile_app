@@ -6,19 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
-import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class CourseDetailsActivity extends AppCompatActivity {
 
@@ -67,13 +62,13 @@ public class CourseDetailsActivity extends AppCompatActivity {
         startDate = DateConverter.dateToString(startDateClass);
         endDate = DateConverter.dateToString(endDateClass);
 
-        titleText = findViewById(R.id.course_details_title_text);
-        startText = findViewById(R.id.course_details_start_text);
-        endText = findViewById(R.id.course_details_end_text);
-        statusText = findViewById(R.id.course_details_status_text);
-        instNameText = findViewById(R.id.course_details_inst_name_text);
-        instPhoneText = findViewById(R.id.course_details_inst_phone_text);
-        instEmailText = findViewById(R.id.course_details_inst_email_text);
+        titleText = findViewById(R.id.course_edit_title_text);
+        startText = findViewById(R.id.course_edit_start_text);
+        endText = findViewById(R.id.course_edit_end_text);
+        statusText = findViewById(R.id.course_edit_status_text);
+        instNameText = findViewById(R.id.course_edit_inst_name_text);
+        instPhoneText = findViewById(R.id.course_edit_inst_phone_text);
+        instEmailText = findViewById(R.id.course_edit_inst_email_text);
         assocTermText = findViewById(R.id.course_details_assoc_term_text);
 
         titleText.setText(courseName);
@@ -103,14 +98,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
 
             case R.id.edit_menu_item:
                 Intent editIntent = new Intent(this, EditCourseActivity.class);
-                editIntent.putExtra("courseId", courseId);
-                editIntent.putExtra("courseName", courseName);
-                editIntent.putExtra("startDate", startDate);
-                editIntent.putExtra("endDate", endDate);
-                editIntent.putExtra("status", status);
-                editIntent.putExtra("instName", instName);
-                editIntent.putExtra("instPhone", instPhone);
-                editIntent.putExtra("instEmail", instEmail);
+                editIntent.putExtra("course", course);
                 startActivity(editIntent);
                 return true;
 
