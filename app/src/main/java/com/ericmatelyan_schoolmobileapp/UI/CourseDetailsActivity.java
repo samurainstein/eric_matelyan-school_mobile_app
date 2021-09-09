@@ -29,6 +29,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
     private String instPhone;
     private String instEmail;
     private String assocTerm;
+    private String notes;
 
     private TextView titleText;
     private TextView startText;
@@ -38,6 +39,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
     private TextView instPhoneText;
     private TextView instEmailText;
     private TextView assocTermText;
+    private TextView notesText;
 
     private SchoolCalendarRepo repository;
 
@@ -58,18 +60,20 @@ public class CourseDetailsActivity extends AppCompatActivity {
         instPhone = course.getInstructorPhone();
         instEmail = course.getInstructorEmail();
         assocTerm = course.getAssocTerm();
+        notes = course.getNotes();
 
         startDate = DateConverter.dateToString(startDateClass);
         endDate = DateConverter.dateToString(endDateClass);
 
-        titleText = findViewById(R.id.course_edit_title_text);
-        startText = findViewById(R.id.course_edit_start_text);
-        endText = findViewById(R.id.course_edit_end_text);
-        statusText = findViewById(R.id.course_edit_status_text);
-        instNameText = findViewById(R.id.course_edit_inst_name_text);
-        instPhoneText = findViewById(R.id.course_edit_inst_phone_text);
-        instEmailText = findViewById(R.id.course_edit_inst_email_text);
+        titleText = findViewById(R.id.course_details_title_text);
+        startText = findViewById(R.id.course_details_start_text);
+        endText = findViewById(R.id.course_details_end_text);
+        statusText = findViewById(R.id.course_details_status_text);
+        instNameText = findViewById(R.id.course_details_inst_name_text);
+        instPhoneText = findViewById(R.id.course_details_inst_phone_text);
+        instEmailText = findViewById(R.id.course_details_inst_email_text);
         assocTermText = findViewById(R.id.course_details_assoc_term_text);
+        notesText = findViewById(R.id.course_details_notes_text);
 
         titleText.setText(courseName);
         startText.setText(startDate);
@@ -79,6 +83,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
         instPhoneText.setText(instPhone);
         instEmailText.setText(instEmail);
         assocTermText.setText(assocTerm);
+        notesText.setText(notes);
 
     }
 
