@@ -18,7 +18,7 @@ import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {TermEntity.class, CourseEntity.class, AssignmentEntity.class}, version = 1, exportSchema = false)
+@Database(entities = {TermEntity.class, CourseEntity.class, AssignmentEntity.class}, version = 2, exportSchema = false)
 @TypeConverters({DateConverter.class})
 public abstract class SchoolCalendarDB extends RoomDatabase {
 
