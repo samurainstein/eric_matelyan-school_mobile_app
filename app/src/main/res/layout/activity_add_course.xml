@@ -141,11 +141,23 @@
 
         </LinearLayout>
 
+        <ScrollView
+            android:layout_width="370dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/scrollview_border">
+
+            <EditText
+                android:id="@+id/course_add_notes_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </ScrollView>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/edit_course_save_button"
+        android:id="@+id/add_course_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save_term_button"
