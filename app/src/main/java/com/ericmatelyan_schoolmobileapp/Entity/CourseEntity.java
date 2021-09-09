@@ -20,6 +20,7 @@ public class CourseEntity implements Serializable {
     private String instructorEmail;
     private String assocTerm;
 
+    //FIX THIS: Optional note?
     public CourseEntity(int courseId, String courseName, Date startDate, Date endDate, String status,
                         String instructorName, String instructorPhone, String instructorEmail, String assocTerm) {
         this.courseId = courseId;
