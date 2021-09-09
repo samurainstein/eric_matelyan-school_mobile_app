@@ -28,18 +28,6 @@ public class CoursesActivity extends AppCompatActivity {
 
         repository = new SchoolCalendarRepo(getApplication());
         List<CourseEntity> allCourses = repository.getAllCourses();
-        if(allCourses.size()==0) {
-            CourseEntity course = new CourseEntity(IdManager.getNextCourseId(),
-                    "Test Course",
-                    new Date(),
-                    new Date(),
-                    "In Progress",
-                    "Instructor Name",
-                    "Instructor Phone",
-                    "Instructor Email",
-                    "Term 1");
-            repository.insert(course);
-        }
 
         RecyclerView recyclerView = findViewById(R.id.courses_recycler);
         final CourseAdapter courseAdapter = new CourseAdapter(this);
