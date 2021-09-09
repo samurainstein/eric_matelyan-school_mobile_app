@@ -12,14 +12,16 @@ public class AssignmentEntity implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int assignmentId;
     private String assignmentType;
+    private String assocCourse;
     private String assignmentName;
     private Date startDate;
     private Date endDate;
 
-    public AssignmentEntity(int assignmentId, String assignmentType, String assignmentName, Date startDate, Date endDate) {
+    public AssignmentEntity(int assignmentId, String assignmentName, String assocCourse, String assignmentType,  Date startDate, Date endDate) {
         this.assignmentId = assignmentId;
-        this.assignmentType = assignmentType;
         this.assignmentName = assignmentName;
+        this.assocCourse = assocCourse;
+        this.assignmentType = assignmentType;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -32,6 +34,18 @@ public class AssignmentEntity implements Serializable {
         this.assignmentId = assignmentId;
     }
 
+    public String getAssignmentName() {
+        return assignmentName;
+    }
+
+    public void setAssignmentName(String assignmentName) {
+        this.assignmentName = assignmentName;
+    }
+
+    public String getAssocCourse() { return assocCourse; }
+
+    public void setAssocCourse(String assocCourse) { this.assocCourse = assocCourse; }
+
     public String getAssignmentType() {
         return assignmentType;
     }
@@ -40,13 +54,6 @@ public class AssignmentEntity implements Serializable {
         this.assignmentType = assignmentType;
     }
 
-    public String getAssignmentName() {
-        return assignmentName;
-    }
-
-    public void setAssignmentName(String assignmentName) {
-        this.assignmentName = assignmentName;
-    }
 
     public Date getStartDate() {
         return startDate;
@@ -74,4 +81,6 @@ public class AssignmentEntity implements Serializable {
                 ", endDate=" + endDate +
                 '}';
     }
+
+
 }
