@@ -6,4 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".UI.AssignmentsActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assignments_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="addAssignment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        style="@style/floatingActionButton"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
