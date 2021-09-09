@@ -39,6 +39,7 @@ public class AddCourseActivity extends AppCompatActivity {
     private String instName;
     private String instPhone;
     private String instEmail;
+    private String notes;
 
     private EditText titleText;
     private TextView startText;
@@ -50,6 +51,7 @@ public class AddCourseActivity extends AppCompatActivity {
     private EditText instNameText;
     private EditText instPhoneText;
     private EditText instEmailText;
+    private EditText notesText;
 
     private SchoolCalendarRepo repository;
 
@@ -68,6 +70,7 @@ public class AddCourseActivity extends AppCompatActivity {
         instNameText = findViewById(R.id.course_add_inst_name_text);
         instPhoneText = findViewById(R.id.course_add_inst_phone_text);
         instEmailText = findViewById(R.id.course_add_inst_email_text);
+        notesText = findViewById(R.id.course_edit_notes_text);
 
         //Start Date----------------
         startCalendar = Calendar.getInstance();
@@ -102,7 +105,19 @@ public class AddCourseActivity extends AppCompatActivity {
         instPhone = instPhoneText.getText().toString();
         instEmail = instEmailText.getText().toString();
         assocTerm = assocTermSpinner.getSelectedItem().toString();
-        CourseEntity newCourse = new CourseEntity(courseId, courseName, startDateClass, endDateClass, status, instName, instPhone, instEmail, assocTerm);
+        notes = notesText.getText().toString();
+
+        CourseEntity newCourse = new CourseEntity(
+                courseId,
+                courseName,
+                startDateClass,
+                endDateClass,
+                status,
+                instName,
+                instPhone,
+                instEmail,
+                assocTerm,
+                notes);
         repository.insert(newCourse);
 
         Intent intent = new Intent(this, CoursesActivity.class);
