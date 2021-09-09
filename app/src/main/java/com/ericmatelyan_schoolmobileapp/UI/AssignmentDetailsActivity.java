@@ -78,11 +78,11 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
                 startActivity(homeIntent);
                 return true;
 
-//            case R.id.edit_menu_item:
-//                Intent editIntent = new Intent(this, EditAssignmentActivity.class);
-//                editIntent.putExtra("assignment", assignment);
-//                startActivity(editIntent);
-//                return true;
+            case R.id.edit_menu_item:
+                Intent editIntent = new Intent(this, EditAssignmentActivity.class);
+                editIntent.putExtra("assignment", assignment);
+                startActivity(editIntent);
+                return true;
 
             case R.id.delete_menu_item:
                 repository.delete(assignment);
