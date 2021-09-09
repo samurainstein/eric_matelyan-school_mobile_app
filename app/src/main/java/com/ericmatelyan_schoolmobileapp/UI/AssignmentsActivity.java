@@ -28,15 +28,7 @@ public class AssignmentsActivity extends AppCompatActivity {
 
         repository = new SchoolCalendarRepo(getApplication());
         List<AssignmentEntity> allAssignments = repository.getAllAssignments();
-        if(allAssignments.size()==0) {
-            AssignmentEntity assignment = new AssignmentEntity(
-                    IdManager.getNextAssignmentId(),
-                    "Performance Assessment",
-                    "Test Assignment",
-                    new Date(),
-                    new Date());
-            repository.insert(assignment);
-        }
+
 
         RecyclerView recyclerView = findViewById(R.id.courses_recycler);
         final AssignmentAdapter assignmentAdapter = new AssignmentAdapter(this);
