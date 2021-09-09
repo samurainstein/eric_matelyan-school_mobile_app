@@ -27,14 +27,6 @@ public class TermsActivity extends AppCompatActivity {
 
         repository = new SchoolCalendarRepo(getApplication());
         List<TermEntity> allTerms = repository.getAllTerms();
-
-        if(allTerms.size()==0) {
-            TermEntity term = new TermEntity(IdManager.getNextTermId(),
-                    "Term 1",
-                    new Date(),
-                    new Date());
-            repository.insert(term);
-        }
         
         RecyclerView recyclerView = findViewById(R.id.terms_recycler);
         final TermAdapter termAdapter = new TermAdapter(this);
