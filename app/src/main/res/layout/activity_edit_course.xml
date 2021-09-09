@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
         tools:ignore="MissingConstraints">
 
         <LinearLayout
@@ -141,6 +140,23 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/course_edit_notes_label"
+            android:text="@string/notes"
+            style="@style/courseLabel" />
+
+        <ScrollView
+            android:layout_width="370dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/scrollview_border">
+
+            <EditText
+                android:id="@+id/course_edit_notes_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </ScrollView>
 
     </LinearLayout>
 
