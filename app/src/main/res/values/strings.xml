@@ -20,6 +20,8 @@
     <string name="course_inst_email">Instructor Email</string>
     <string name="term_details_assoc_courses_label">Courses</string>
     <string name="associated_term">Term</string>
+    <string name="assignment_title">Assignment Title</string>
+    <string name="assignment_type">Assignment Type</string>
     <string-array name="status_array">
         <item>In Progress</item>
         <item>Completed</item>
