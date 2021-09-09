@@ -19,10 +19,10 @@ public class CourseEntity implements Serializable {
     private String instructorPhone;
     private String instructorEmail;
     private String assocTerm;
+    private String notes;
 
-    //FIX THIS: Optional note?
     public CourseEntity(int courseId, String courseName, Date startDate, Date endDate, String status,
-                        String instructorName, String instructorPhone, String instructorEmail, String assocTerm) {
+                        String instructorName, String instructorPhone, String instructorEmail, String assocTerm, String notes) {
         this.courseId = courseId;
         this.courseName = courseName;
         this.startDate = startDate;
@@ -32,6 +32,7 @@ public class CourseEntity implements Serializable {
         this.instructorPhone = instructorPhone;
         this.instructorEmail = instructorEmail;
         this.assocTerm = assocTerm;
+        this.notes = notes;
     }
 
     public int getCourseId() {
@@ -105,6 +106,10 @@ public class CourseEntity implements Serializable {
     public void setAssocTerm(String assocTerm) {
         this.assocTerm = assocTerm;
     }
+
+    public String getNotes() { return notes; }
+
+    public void setNotes(String notes) { this.notes = notes; }
 
     @Override
     public String toString() {
