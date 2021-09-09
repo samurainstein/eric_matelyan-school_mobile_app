@@ -153,4 +153,26 @@ public class SchoolCalendarRepo {
             e.printStackTrace();
         }
     }
+
+    public void update(AssignmentEntity assignment) {
+        SchoolCalendarDB.databaseExecutor.execute(() -> {
+            assignmentDAO.update(assignment);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(AssignmentEntity assignment) {
+        SchoolCalendarDB.databaseExecutor.execute(() -> {
+            assignmentDAO.delete(assignment);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
