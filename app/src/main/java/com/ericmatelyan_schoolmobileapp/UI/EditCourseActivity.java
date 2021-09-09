@@ -43,6 +43,7 @@ public class EditCourseActivity extends AppCompatActivity {
     private String instName;
     private String instPhone;
     private String instEmail;
+    private String notes;
 
     private EditText titleText;
     private TextView startText;
@@ -54,6 +55,7 @@ public class EditCourseActivity extends AppCompatActivity {
     private EditText instNameText;
     private EditText instPhoneText;
     private EditText instEmailText;
+    private EditText notesText;
 
     private SchoolCalendarRepo repository;
 
@@ -64,6 +66,7 @@ public class EditCourseActivity extends AppCompatActivity {
         context = EditCourseActivity.this;
         repository = new SchoolCalendarRepo(getApplication());
         course = (CourseEntity) getIntent().getSerializableExtra("course");
+
         courseName = course.getCourseName();
         assocTerm = course.getAssocTerm();
         startDateClass = course.getStartDate();
@@ -74,6 +77,7 @@ public class EditCourseActivity extends AppCompatActivity {
         instName = course.getInstructorName();
         instPhone = course.getInstructorPhone();
         instEmail = course.getInstructorEmail();
+        notes = course.getNotes();
 
         titleText = findViewById(R.id.course_edit_title_text);
         startText = findViewById(R.id.course_edit_start_text);
@@ -81,6 +85,7 @@ public class EditCourseActivity extends AppCompatActivity {
         instNameText = findViewById(R.id.course_edit_inst_name_text);
         instPhoneText = findViewById(R.id.course_edit_inst_phone_text);
         instEmailText = findViewById(R.id.course_edit_inst_email_text);
+        notesText = findViewById(R.id.course_edit_notes_text);
 
         titleText.setText(courseName);
         startText.setText(startDate);
@@ -88,6 +93,7 @@ public class EditCourseActivity extends AppCompatActivity {
         instNameText.setText(instName);
         instPhoneText.setText(instPhone);
         instEmailText.setText(instEmail);
+        notesText.setText(notes);
 
         //Start Date----------------
         LocalDate startLocalDate = DateConverter.dateToLocalDate(startDateClass);
@@ -140,6 +146,7 @@ public class EditCourseActivity extends AppCompatActivity {
         instName = instNameText.getText().toString();
         instPhone = instPhoneText.getText().toString();
         instEmail = instEmailText.getText().toString();
+        notes = notesText.getText().toString();
 
         CourseEntity updateCourse = new CourseEntity(courseId,
                 title,
@@ -149,7 +156,8 @@ public class EditCourseActivity extends AppCompatActivity {
                 instName,
                 instPhone,
                 instEmail,
-                assocTerm);
+                assocTerm,
+                notes);
         repository.update(updateCourse);
 
         Intent intent = new Intent(this, CourseDetailsActivity.class);
