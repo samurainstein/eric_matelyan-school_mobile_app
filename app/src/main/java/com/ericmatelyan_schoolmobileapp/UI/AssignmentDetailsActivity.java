@@ -22,6 +22,7 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
 
     private AssignmentEntity assignment;
     private String assignmentName;
+    private String assocCourse;
     private String assignmentType;
     private Date startDateClass;
     private Date endDateClass;
@@ -29,6 +30,7 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
     private String endDate;
 
     private TextView titleText;
+    private TextView assocCourseText;
     private TextView typeText;
     private TextView startText;
     private TextView endText;
@@ -43,6 +45,7 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
 
         assignment = (AssignmentEntity) getIntent().getSerializableExtra("assignment");
         assignmentName = assignment.getAssignmentName();
+        assocCourse = assignment.getAssocCourse();
         assignmentType = assignment.getAssignmentType();
         startDateClass = assignment.getStartDate();
         endDateClass = assignment.getEndDate();
@@ -50,11 +53,13 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
         endDate = DateConverter.dateToString(endDateClass);
 
         titleText = findViewById(R.id.assignment_details_title_text);
+        assocCourseText = findViewById(R.id.assignment_details_course_text);
         typeText = findViewById(R.id.assignment_details_type_text);
         startText = findViewById(R.id.assignment_details_start_text);
         endText = findViewById(R.id.assignment_details_end_text);
 
         titleText.setText(assignmentName);
+        assocCourseText.setText(assocCourse);
         typeText.setText(assignmentType);
         startText.setText(startDate);
         endText.setText(endDate);
