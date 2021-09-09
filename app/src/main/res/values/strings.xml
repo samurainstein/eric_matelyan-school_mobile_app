@@ -22,6 +22,8 @@
     <string name="associated_term">Term</string>
     <string name="assignment_title">Assignment Title</string>
     <string name="assignment_type">Assignment Type</string>
+    <string name="assoc_course">Course</string>
+    <string name="notes">Notes</string>
     <string-array name="status_array">
         <item>In Progress</item>
         <item>Completed</item>
