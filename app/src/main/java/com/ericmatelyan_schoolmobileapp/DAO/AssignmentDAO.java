@@ -9,7 +9,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.ericmatelyan_schoolmobileapp.Entity.AssignmentEntity;
-import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 
 import java.util.List;
 
