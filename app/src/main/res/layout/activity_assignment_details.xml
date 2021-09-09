@@ -22,6 +22,15 @@
             style="@style/termText"/>
 
         <TextView
+            android:id="@+id/assignment_details_course_label"
+            android:text="@string/assoc_course"
+            style="@style/termLabel" />
+
+        <TextView
+            android:id="@+id/assignment_details_course_text"
+            style="@style/termText"/>
+
+        <TextView
             android:id="@+id/assignment_details_type_label"
             android:text="@string/assignment_type"
             style="@style/termLabel" />
