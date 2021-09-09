@@ -70,7 +70,7 @@ public class AddCourseActivity extends AppCompatActivity {
         instNameText = findViewById(R.id.course_add_inst_name_text);
         instPhoneText = findViewById(R.id.course_add_inst_phone_text);
         instEmailText = findViewById(R.id.course_add_inst_email_text);
-        notesText = findViewById(R.id.course_edit_notes_text);
+        notesText = findViewById(R.id.course_add_notes_text);
 
         //Start Date----------------
         startCalendar = Calendar.getInstance();
