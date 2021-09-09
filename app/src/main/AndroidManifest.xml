@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EricMatelyanSchoolMobileApp">
         <activity
+            android:name=".UI.EditAssignmentActivity"
+            android:exported="true"
+            android:label="Edit Assignment"
+            android:parentActivityName=".UI.AssignmentDetailsActivity"/>
+        <activity
             android:name=".UI.AssignmentDetailsActivity"
             android:exported="true"
             android:label="Assignment Details"
-            android:parentActivityName=".UI.AssignmentsActivity"/>
+            android:parentActivityName=".UI.AssignmentsActivity" />
         <activity
             android:name=".UI.AddCourseActivity"
             android:exported="true"
