@@ -3,22 +3,23 @@ package com.ericmatelyan_schoolmobileapp.Entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
 @Entity(tableName = "assignment_table")
-public class AssignmentEntity {
+public class AssignmentEntity implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int assignmentId;
     private String assignmentType;
-    private String assignmentTitle;
+    private String assignmentName;
     private Date startDate;
     private Date endDate;
 
-    public AssignmentEntity(int assignmentId, String assignmentType, String assignmentTitle, Date startDate, Date endDate) {
+    public AssignmentEntity(int assignmentId, String assignmentType, String assignmentName, Date startDate, Date endDate) {
         this.assignmentId = assignmentId;
         this.assignmentType = assignmentType;
-        this.assignmentTitle = assignmentTitle;
+        this.assignmentName = assignmentName;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -39,12 +40,12 @@ public class AssignmentEntity {
         this.assignmentType = assignmentType;
     }
 
-    public String getAssignmentTitle() {
-        return assignmentTitle;
+    public String getAssignmentName() {
+        return assignmentName;
     }
 
-    public void setAssignmentTitle(String assignmentTitle) {
-        this.assignmentTitle = assignmentTitle;
+    public void setAssignmentName(String assignmentName) {
+        this.assignmentName = assignmentName;
     }
 
     public Date getStartDate() {
@@ -68,7 +69,7 @@ public class AssignmentEntity {
         return "AssignmentEntity{" +
                 "assignmentId=" + assignmentId +
                 ", assignmentType='" + assignmentType + '\'' +
-                ", assignmentTitle='" + assignmentTitle + '\'' +
+                ", assignmentName='" + assignmentName + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';
