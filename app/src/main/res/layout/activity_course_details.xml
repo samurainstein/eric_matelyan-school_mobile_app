@@ -148,16 +148,28 @@
 
         <ScrollView
             android:layout_width="370dp"
-            android:layout_height="120dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/scrollview_border">
 
             <TextView
                 android:id="@+id/course_details_notes_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/courseText" />
 
         </ScrollView>
+
+        <TextView
+            android:id="@+id/course_details_assoc_assignments_label"
+            android:text="@string/assignments"
+            android:layout_marginBottom="3dp"
+            style="@style/courseLabel" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/assoc_assignments_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
 
     </LinearLayout>
 
