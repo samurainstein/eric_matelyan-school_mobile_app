@@ -31,7 +31,7 @@ public class TermDetailsActivity extends AppCompatActivity {
     private TextView startText;
     private TextView endText;
     private SchoolCalendarRepo repository;
-    List<CourseEntity> assocCourses;
+    private List<CourseEntity> assocCourses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
