@@ -97,7 +97,6 @@ public class EditCourseActivity extends AppCompatActivity {
 
         //Start Date----------------
         LocalDate startLocalDate = DateConverter.dateToLocalDate(startDateClass);
-        startText = findViewById(R.id.course_edit_start_text);
         startCalendar = Calendar.getInstance();
         int startYear = startLocalDate.getYear();
         int startMonth = startLocalDate.getMonthValue() - 1;
