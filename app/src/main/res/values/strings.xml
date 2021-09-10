@@ -24,10 +24,16 @@
     <string name="assignment_type">Assignment Type</string>
     <string name="assoc_course">Course</string>
     <string name="notes">Notes</string>
+    <string name="assignments">Assignments</string>
     <string-array name="status_array">
         <item>In Progress</item>
         <item>Completed</item>
         <item>Dropped</item>
         <item>Plan To Take</item>
     </string-array>
+    <string-array name="assignment_types_array">
+        <item>Performance Assessment</item>
+        <item>Objective Assessment</item>
+    </string-array>
+
 </resources>
