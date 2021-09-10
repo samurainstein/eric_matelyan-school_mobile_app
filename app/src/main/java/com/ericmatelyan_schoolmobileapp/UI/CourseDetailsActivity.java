@@ -1,6 +1,8 @@
 package com.ericmatelyan_schoolmobileapp.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +11,13 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
+import com.ericmatelyan_schoolmobileapp.Entity.AssignmentEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
 import java.util.Date;
+import java.util.List;
 
 public class CourseDetailsActivity extends AppCompatActivity {
 
@@ -42,6 +46,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
     private TextView notesText;
 
     private SchoolCalendarRepo repository;
+    private List<AssignmentEntity> assocAssignments;
 
 
     @Override
@@ -84,6 +89,15 @@ public class CourseDetailsActivity extends AppCompatActivity {
         instEmailText.setText(instEmail);
         assocTermText.setText(assocTerm);
         notesText.setText(notes);
+
+        assocAssignments = repository.getAssociatedAssignments(courseName);
+
+        RecyclerView recyclerView = findViewById(R.id.assoc_assignments_recycler);
+        final AssignmentAdapter assignmentAdapter = new AssignmentAdapter(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setAdapter(assignmentAdapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        assignmentAdapter.setAssignments(assocAssignments);
 
     }
 
