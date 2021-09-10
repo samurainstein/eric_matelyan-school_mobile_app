@@ -21,6 +21,7 @@ public class SchoolCalendarRepo {
     private List<CourseEntity> allCourses;
     private List<AssignmentEntity> allAssignments;
     private List<CourseEntity> assocCourses;
+    private List<AssignmentEntity> assocAssignments;
 
     public SchoolCalendarRepo(Application application) {
         SchoolCalendarDB database = SchoolCalendarDB.getDatabase(application);
@@ -174,5 +175,17 @@ public class SchoolCalendarRepo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<AssignmentEntity> getAssociatedAssignments(String course) {
+        SchoolCalendarDB.databaseExecutor.execute(()-> {
+            assocAssignments = courseDao.getAssociatedAssignments(course);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return assocAssignments;
     }
 }
