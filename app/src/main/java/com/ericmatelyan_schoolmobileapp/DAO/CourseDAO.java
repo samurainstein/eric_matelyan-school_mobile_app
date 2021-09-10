@@ -8,6 +8,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.ericmatelyan_schoolmobileapp.Entity.AssignmentEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 
@@ -26,4 +27,7 @@ public interface CourseDAO {
 
     @Query("SELECT * FROM course_table")
     List<CourseEntity> getAllCourses();
+
+    @Query("SELECT * FROM assignment_table WHERE assocCourse = :course;")
+    List<AssignmentEntity> getAssociatedAssignments(String course);
 }
