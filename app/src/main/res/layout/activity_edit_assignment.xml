@@ -36,7 +36,7 @@
             style="@style/termLabel" />
 
         <Spinner
-            android:id="@+id/course_edit_type_spinner"
+            android:id="@+id/assignment_edit_type_spinner"
             style="@style/courseSpinner"/>
 
         <TextView
