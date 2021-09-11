@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/EricMatelyanSchoolMobileApp/app/src/main/res/drawable/scrollview_border.xml" value="0.21354166666666666" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/EricMatelyanSchoolMobileApp/app/src/main/res/layout/activity_add_course.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/EricMatelyanSchoolMobileApp/app/src/main/res/layout/activity_add_assignment.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/EricMatelyanSchoolMobileApp/app/src/main/res/layout/activity_add_course.xml" value="0.2857142857142857" />
         <entry key="..\:/Users/User/AndroidStudioProjects/EricMatelyanSchoolMobileApp/app/src/main/res/layout/activity_add_term.xml" value="0.2857142857142857" />
         <entry key="..\:/Users/User/AndroidStudioProjects/EricMatelyanSchoolMobileApp/app/src/main/res/layout/activity_assignment_details.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/User/AndroidStudioProjects/EricMatelyanSchoolMobileApp/app/src/main/res/layout/activity_assignments.xml" value="0.2536231884057971" />
