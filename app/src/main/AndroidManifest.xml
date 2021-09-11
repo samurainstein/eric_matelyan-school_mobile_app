@@ -10,10 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EricMatelyanSchoolMobileApp">
         <activity
+            android:name=".UI.AddAssignmentActivity"
+            android:exported="true"
+            android:label="Add Assignment"
+            android:windowSoftInputMode="adjustPan"
+            android:parentActivityName=".UI.AssignmentDetailsActivity"/>
+        <activity
             android:name=".UI.EditAssignmentActivity"
             android:exported="true"
             android:label="Edit Assignment"
-            android:parentActivityName=".UI.AssignmentDetailsActivity"/>
+            android:windowSoftInputMode="adjustPan"
+            android:parentActivityName=".UI.AssignmentDetailsActivity" />
         <activity
             android:name=".UI.AssignmentDetailsActivity"
             android:exported="true"
@@ -23,11 +30,13 @@
             android:name=".UI.AddCourseActivity"
             android:exported="true"
             android:label="Add Course"
+            android:windowSoftInputMode="adjustPan"
             android:parentActivityName=".UI.CoursesActivity" /> <!-- FIX THIS: Back Button Crashes.  Calling onCreate() again? -->
         <activity
             android:name=".UI.EditCourseActivity"
             android:exported="true"
             android:label="Edit Course"
+            android:windowSoftInputMode="adjustPan"
             android:parentActivityName=".UI.CourseDetailsActivity" />
         <activity
             android:name=".UI.CourseDetailsActivity"
@@ -38,11 +47,13 @@
             android:name=".UI.EditTermActivity"
             android:exported="true"
             android:label="Edit Term"
+            android:windowSoftInputMode="adjustPan"
             android:parentActivityName=".UI.TermDetailsActivity" />
         <activity
             android:name=".UI.AddTermActivity"
             android:exported="true"
             android:label="Add Term"
+            android:windowSoftInputMode="adjustPan"
             android:parentActivityName=".UI.TermsActivity" />
         <activity
             android:name=".UI.TermDetailsActivity"
