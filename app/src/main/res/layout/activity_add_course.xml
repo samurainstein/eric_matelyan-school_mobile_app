@@ -69,11 +69,11 @@
 
             <TextView
                 android:id="@+id/course_add_start_text"
-                style="@style/courseText" />
+                style="@style/addDate" />
 
             <TextView
                 android:id="@+id/course_add_end_text"
-                style="@style/courseText" />
+                style="@style/addDate" />
 
         </LinearLayout>
 
@@ -141,6 +141,11 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/course_edit_notes_label"
+            android:text="@string/notes"
+            style="@style/courseLabel" />
+
         <ScrollView
             android:layout_width="370dp"
             android:layout_height="120dp"
@@ -150,7 +155,9 @@
             <EditText
                 android:id="@+id/course_add_notes_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:hint="@string/add_notes_here"
+                style="@style/courseText"/>
 
         </ScrollView>
 
