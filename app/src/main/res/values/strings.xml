@@ -6,10 +6,10 @@
     <string name="home_assignments_button">Assignments</string>
     <string name="save_term_button">Save</string>
     <string name="term_title">Term Title</string>
-    <string name="add_term_hint">Term 1, Spring Term, etc</string>
+    <string name="add_term_hint">Term 1, Spring Term</string>
     <string name="menu_home">Home</string>
     <string name="start_date">Start Date</string>
-    <string name="add_term_date_hint">Select a Date</string>
+    <string name="add_date_hint">Select a Date</string>
     <string name="end_date">End Date</string>
     <string name="menu_edit">Edit</string>
     <string name="menu_delete">menu_delete</string>
@@ -25,6 +25,7 @@
     <string name="assoc_course">Course</string>
     <string name="notes">Notes</string>
     <string name="assignments">Assignments</string>
+    <string name="add_notes_here">Add notes here</string>
     <string-array name="status_array">
         <item>In Progress</item>
         <item>Completed</item>
