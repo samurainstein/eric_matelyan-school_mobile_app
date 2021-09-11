@@ -67,7 +67,7 @@ public class TermDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.editmenu, menu);
+        getMenuInflater().inflate(R.menu.edit_menu, menu);
         return true;
     }
 

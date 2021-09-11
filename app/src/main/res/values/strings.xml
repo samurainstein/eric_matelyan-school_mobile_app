@@ -26,6 +26,7 @@
     <string name="notes">Notes</string>
     <string name="assignments">Assignments</string>
     <string name="add_notes_here">Add notes here</string>
+    <string name="share">Share Notes</string>
     <string-array name="status_array">
         <item>In Progress</item>
         <item>Completed</item>
