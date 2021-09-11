@@ -10,13 +10,10 @@ import android.widget.TextView;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.AssignmentEntity;
-import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
-import com.ericmatelyan_schoolmobileapp.Entity.TermEntity;
 import com.ericmatelyan_schoolmobileapp.R;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
 import java.util.Date;
-import java.util.List;
 
 public class AssignmentDetailsActivity extends AppCompatActivity {
 
@@ -66,7 +63,7 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.editmenu, menu);
+        getMenuInflater().inflate(R.menu.edit_menu, menu);
         return true;
     }
 

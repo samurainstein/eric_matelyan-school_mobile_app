@@ -103,7 +103,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.editmenu, menu);
+        getMenuInflater().inflate(R.menu.share_menu, menu);
         return true;
     }
 
@@ -125,6 +125,17 @@ public class CourseDetailsActivity extends AppCompatActivity {
                 repository.delete(course);
                 Intent deleteIntent = new Intent(this, CoursesActivity.class);
                 startActivity(deleteIntent);
+                return true;
+
+            case R.id.share_menu_item:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, notes);
+                sendIntent.putExtra(Intent.EXTRA_TITLE, "Notes");
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
                 return true;
 
             default:

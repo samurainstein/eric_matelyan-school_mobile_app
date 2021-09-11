@@ -1,6 +1,5 @@
 package com.ericmatelyan_schoolmobileapp.UI;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -58,7 +57,7 @@ public class AddTermActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.homemenu, menu);
+        getMenuInflater().inflate(R.menu.home_menu, menu);
         return true;
     }
 
