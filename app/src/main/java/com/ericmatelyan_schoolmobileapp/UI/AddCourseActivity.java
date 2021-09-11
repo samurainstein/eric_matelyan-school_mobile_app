@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,7 +22,6 @@ import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 import com.ericmatelyan_schoolmobileapp.Utility.IdManager;
 import com.ericmatelyan_schoolmobileapp.Utility.SpinnerManager;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -72,6 +74,8 @@ public class AddCourseActivity extends AppCompatActivity {
         instEmailText = findViewById(R.id.course_add_inst_email_text);
         notesText = findViewById(R.id.course_add_notes_text);
 
+
+
         //Start Date----------------
         startCalendar = Calendar.getInstance();
         startCalendar = DateConverter.onClickStartDate(context, startText, startCalendar);
@@ -122,5 +126,24 @@ public class AddCourseActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, CoursesActivity.class);
         startActivity(intent);
+    }
+
+    //To make the soft keyboard disappear when clicking outside of EditText
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if ( v instanceof EditText) {
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    Log.d("focus", "touchevent");
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event);
     }
 }
