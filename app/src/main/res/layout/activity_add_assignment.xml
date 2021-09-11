@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.AddAssignmentActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/assignment_add_title_label"
+            android:text="@string/assignment_title"
+            style="@style/termLabel" />
+
+        <EditText
+            android:id="@+id/assignment_add_title_text"
+            style="@style/termText"/>
+
+        <TextView
+            android:id="@+id/assignment_add_course_label"
+            android:text="@string/assoc_course"
+            style="@style/termLabel" />
+
+        <Spinner
+            android:id="@+id/assignment_add_course_spinner"
+            style="@style/courseSpinner"/>
+
+        <TextView
+            android:id="@+id/assignment_add_type_label"
+            android:text="@string/assignment_type"
+            style="@style/termLabel" />
+
+        <Spinner
+            android:id="@+id/assignment_add_type_spinner"
+            style="@style/courseSpinner"/>
+
+        <TextView
+            android:id="@+id/assignment_add_start_label"
+            android:text="@string/start_date"
+            style="@style/termLabel" />
+
+        <TextView
+            android:id="@+id/assignment_add_start_text"
+            style="@style/addDate" />
+
+        <TextView
+            android:id="@+id/assignment_add_end_label"
+            android:text="@string/end_date"
+            style="@style/termLabel" />
+
+        <TextView
+            android:id="@+id/assignment_add_end_text"
+            style="@style/addDate" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/edit_assignment_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_term_button"
+        android:layout_marginBottom="10dp"
+        android:onClick="add_assignment_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
