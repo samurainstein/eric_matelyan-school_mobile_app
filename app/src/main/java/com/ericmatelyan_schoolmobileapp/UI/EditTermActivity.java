@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -48,6 +49,9 @@ public class EditTermActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_term);
+        //This fixes the issue where the app crashes when hitting the back button on the edit screens
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //Set Fields-----------------------
         term = (TermEntity) getIntent().getSerializableExtra("term");
@@ -94,6 +98,17 @@ public class EditTermActivity extends AppCompatActivity {
         endCalendar.set(Calendar.MONTH, endMonth);
         endCalendar.set(Calendar.DAY_OF_MONTH, endDay);
         endCalendar = DateConverter.onClickEndDate(context, displayEndDate, endCalendar);
+    }
+
+    //This fixes the issue where the app crashes when hitting the back button on the edit screens
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return true;
     }
 
 

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -58,6 +59,10 @@ public class EditAssignmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_assignment);
+        //This fixes the issue where the app crashes when hitting the back button on the edit screens
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         context = EditAssignmentActivity.this;
         repository = new SchoolCalendarRepo(getApplication());
         assignment = (AssignmentEntity) getIntent().getSerializableExtra("assignment");
@@ -114,6 +119,17 @@ public class EditAssignmentActivity extends AppCompatActivity {
         SpinnerManager.setSpinnerSelection(assocCourseSpinner, assocCourse, courseArrayAdapter);
         ArrayAdapter<String> typeArrayAdapter = SpinnerManager.setSpinnerItems(context, typeSpinner, typeStrings);
         SpinnerManager.setSpinnerSelection(typeSpinner, type, typeArrayAdapter);
+    }
+
+    //This fixes the issue where the app crashes when hitting the back button on the edit screens
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return true;
     }
 
     public void edit_assignment_save(View view) {

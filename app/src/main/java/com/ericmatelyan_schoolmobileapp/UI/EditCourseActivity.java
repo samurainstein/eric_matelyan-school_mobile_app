@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -67,6 +68,10 @@ public class EditCourseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_course);
+        //This fixes the issue where the app crashes when hitting the back button on the edit screens
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         context = EditCourseActivity.this;
         repository = new SchoolCalendarRepo(getApplication());
         course = (CourseEntity) getIntent().getSerializableExtra("course");
@@ -136,6 +141,17 @@ public class EditCourseActivity extends AppCompatActivity {
         ArrayAdapter<String> statusArrayAdapter = SpinnerManager.setSpinnerItems(context, statusSpinner, statusStrings);
         SpinnerManager.setSpinnerSelection(statusSpinner, status, statusArrayAdapter);
 
+    }
+
+    //This fixes the issue where the app crashes when hitting the back button on the edit screens
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return true;
     }
 
     public void edit_course_save(View view) {
