@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
@@ -86,10 +88,20 @@ public class TermDetailsActivity extends AppCompatActivity {
                 return true;
 
             case R.id.delete_menu_item:
-                repository.delete(term);
-                Intent deleteIntent = new Intent(this, TermsActivity.class);
-                startActivity(deleteIntent);
-                return true;
+                if(assocCourses.size() != 0) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please delete all associated courses first";
+                    int duration = Toast.LENGTH_LONG;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                else {
+                    repository.delete(term);
+                    Intent deleteIntent = new Intent(this, TermsActivity.class);
+                    startActivity(deleteIntent);
+                    return true;
+                }
 
             default:
                 return super.onOptionsItemSelected(item);
