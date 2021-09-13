@@ -20,4 +20,8 @@
     <item android:title="@string/share"
         android:id="@+id/share_menu_item"
         app:showAsAction="never"/>
+
+    <item android:title="@string/menu_notify"
+        android:id="@+id/notify_menu_item"
+        app:showAsAction="never"/>
 </menu>
