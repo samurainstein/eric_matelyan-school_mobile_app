@@ -1,19 +1,21 @@
 package com.ericmatelyan_schoolmobileapp.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.AssignmentEntity;
 import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
 import com.ericmatelyan_schoolmobileapp.R;
+import com.ericmatelyan_schoolmobileapp.Utility.AlertManager;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
 import java.util.Date;
@@ -48,11 +50,13 @@ public class CourseDetailsActivity extends AppCompatActivity {
     private SchoolCalendarRepo repository;
     private List<AssignmentEntity> assocAssignments;
 
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_details);
+        context = CourseDetailsActivity.this;
 
         repository = new SchoolCalendarRepo(getApplication());
         course = (CourseEntity) getIntent().getSerializableExtra("course");
@@ -103,7 +107,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.share_menu, menu);
+        getMenuInflater().inflate(R.menu.course_details_menu, menu);
         return true;
     }
 
@@ -136,6 +140,17 @@ public class CourseDetailsActivity extends AppCompatActivity {
 
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
                 startActivity(shareIntent);
+                return true;
+
+            case R.id.notify_menu_item:
+                Long startTrigger = startDateClass.getTime();
+                Long endTrigger = endDateClass.getTime();
+                String startMessage = courseName + " starts on " + startDate;
+                String endMessage = courseName + " ends on " + endDate;
+                String startTitle = "Course Start";
+                String endTitle = "Course End";
+                AlertManager.createAlert(context, startTrigger, startTitle, startMessage);
+                AlertManager.createAlert(context, endTrigger, endTitle, endMessage);
                 return true;
 
             default:
