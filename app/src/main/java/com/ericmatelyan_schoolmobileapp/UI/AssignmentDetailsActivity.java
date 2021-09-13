@@ -2,6 +2,7 @@ package com.ericmatelyan_schoolmobileapp.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.AssignmentEntity;
 import com.ericmatelyan_schoolmobileapp.R;
+import com.ericmatelyan_schoolmobileapp.Utility.AlertManager;
 import com.ericmatelyan_schoolmobileapp.Utility.DateConverter;
 
 import java.util.Date;
@@ -32,11 +34,13 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
     private TextView startText;
     private TextView endText;
     private SchoolCalendarRepo repository;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assignment_details);
+        context = AssignmentDetailsActivity.this;
 
         repository = new SchoolCalendarRepo(getApplication());
 
@@ -63,7 +67,7 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_menu, menu);
+        getMenuInflater().inflate(R.menu.assignment_details_menu, menu);
         return true;
     }
 
@@ -85,6 +89,17 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
                 repository.delete(assignment);
                 Intent deleteIntent = new Intent(this, AssignmentsActivity.class);
                 startActivity(deleteIntent);
+                return true;
+
+            case R.id.notify_menu_item:
+                Long startTrigger = startDateClass.getTime();
+                Long endTrigger = endDateClass.getTime();
+                String startMessage = assignmentName + " starts on " + startDate;
+                String endMessage = assignmentName + " ends on " + endDate;
+                String startTitle = "Assignment Start";
+                String endTitle = "Assignment End";
+                AlertManager.createAlert(context, startTrigger, startTitle, startMessage);
+                AlertManager.createAlert(context, endTrigger, endTitle, endMessage);
                 return true;
 
             default:
