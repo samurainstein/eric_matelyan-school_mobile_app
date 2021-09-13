@@ -11,6 +11,7 @@ public abstract class IdManager {
     private static int nextTermId = 0;
     private static int nextCourseId = 0;
     private static int nextAssignmentId = 0;
+    private static int nextRequestId = 0;
 
     public static void setNextTermId(SchoolCalendarRepo repository) {
         List<TermEntity> allTerms = repository.getAllTerms();
@@ -41,5 +42,10 @@ public abstract class IdManager {
     public static int getNextAssignmentId() {
         nextAssignmentId = nextAssignmentId + 1;
         return nextAssignmentId;
+    }
+
+    public static int getNextRequestId() {
+        nextRequestId = nextRequestId + 1;
+        return nextRequestId;
     }
 }
