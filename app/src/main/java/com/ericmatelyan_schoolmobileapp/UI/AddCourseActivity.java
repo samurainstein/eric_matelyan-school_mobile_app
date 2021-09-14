@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
@@ -58,6 +59,7 @@ public class AddCourseActivity extends AppCompatActivity {
     private EditText notesText;
 
     private SchoolCalendarRepo repository;
+    private List<CourseEntity> allCourses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,10 @@ public class AddCourseActivity extends AppCompatActivity {
 
         context = AddCourseActivity.this;
         repository = new SchoolCalendarRepo(getApplication());
-        IdManager.setNextCourseId(repository);
+        allCourses = repository.getAllCourses();
+        if(!allCourses.isEmpty()) {
+            IdManager.setNextCourseId(repository);
+        }
 
         titleText = findViewById(R.id.course_add_title_text);
         startText = findViewById(R.id.course_add_start_text);
@@ -120,7 +125,6 @@ public class AddCourseActivity extends AppCompatActivity {
     }
 
     public void edit_course_save(View view) {
-        //FIX THIS: Make sure all fields are filled in.
         courseId = IdManager.getNextCourseId();
         courseName = titleText.getText().toString();
         startDateClass = startCalendar.getTime();
@@ -132,21 +136,31 @@ public class AddCourseActivity extends AppCompatActivity {
         assocTerm = assocTermSpinner.getSelectedItem().toString();
         notes = notesText.getText().toString();
 
-        CourseEntity newCourse = new CourseEntity(
-                courseId,
-                courseName,
-                startDateClass,
-                endDateClass,
-                status,
-                instName,
-                instPhone,
-                instEmail,
-                assocTerm,
-                notes);
-        repository.insert(newCourse);
+        if(courseName.isEmpty() || instName.isEmpty() || instPhone.isEmpty() || instEmail.isEmpty()) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill in all required fields";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
-        Intent intent = new Intent(this, CoursesActivity.class);
-        startActivity(intent);
+        else {
+            CourseEntity newCourse = new CourseEntity(
+                    courseId,
+                    courseName,
+                    startDateClass,
+                    endDateClass,
+                    status,
+                    instName,
+                    instPhone,
+                    instEmail,
+                    assocTerm,
+                    notes);
+            repository.insert(newCourse);
+
+            Intent intent = new Intent(this, CoursesActivity.class);
+            startActivity(intent);
+        }
     }
 
     //To make the soft keyboard disappear when clicking outside of EditText
