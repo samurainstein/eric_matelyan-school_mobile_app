@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.AssignmentEntity;
@@ -140,18 +141,28 @@ public class EditAssignmentActivity extends AppCompatActivity {
         Date endDate = endCalendar.getTime();
         type = typeSpinner.getSelectedItem().toString();
 
-        AssignmentEntity updateAssignment = new AssignmentEntity(
-                assignmentId,
-                assignmentName,
-                assocCourse,
-                type,
-                startDate,
-                endDate);
-        repository.update(updateAssignment);
+        if(assignmentName.isEmpty()) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill in all required fields";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
-        Intent intent = new Intent(this, AssignmentDetailsActivity.class);
-        intent.putExtra("assignment", updateAssignment);
-        startActivity(intent);
+        else {
+            AssignmentEntity updateAssignment = new AssignmentEntity(
+                    assignmentId,
+                    assignmentName,
+                    assocCourse,
+                    type,
+                    startDate,
+                    endDate);
+            repository.update(updateAssignment);
+
+            Intent intent = new Intent(this, AssignmentDetailsActivity.class);
+            intent.putExtra("assignment", updateAssignment);
+            startActivity(intent);
+        }
     }
 
     //To make the soft keyboard disappear when clicking outside of EditText

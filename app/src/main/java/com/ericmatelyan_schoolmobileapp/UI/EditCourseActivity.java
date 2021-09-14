@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.CourseEntity;
@@ -155,9 +156,8 @@ public class EditCourseActivity extends AppCompatActivity {
     }
 
     public void edit_course_save(View view) {
-        //FIX THIS: Make sure all fields are filled in.
         courseId = course.getCourseId();
-        String title = titleText.getText().toString();
+        courseName = titleText.getText().toString();
         assocTerm = assocTermSpinner.getSelectedItem().toString();
         Date startDate = startCalendar.getTime();
         Date endDate = endCalendar.getTime();
@@ -167,21 +167,31 @@ public class EditCourseActivity extends AppCompatActivity {
         instEmail = instEmailText.getText().toString();
         notes = notesText.getText().toString();
 
-        CourseEntity updateCourse = new CourseEntity(courseId,
-                title,
-                startDate,
-                endDate,
-                status,
-                instName,
-                instPhone,
-                instEmail,
-                assocTerm,
-                notes);
-        repository.update(updateCourse);
+        if(courseName.isEmpty() || instName.isEmpty() || instPhone.isEmpty() || instEmail.isEmpty()) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill in all required fields";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
-        Intent intent = new Intent(this, CourseDetailsActivity.class);
-        intent.putExtra("course", updateCourse);
-        startActivity(intent);
+        else {
+            CourseEntity updateCourse = new CourseEntity(courseId,
+                    courseName,
+                    startDate,
+                    endDate,
+                    status,
+                    instName,
+                    instPhone,
+                    instEmail,
+                    assocTerm,
+                    notes);
+            repository.update(updateCourse);
+
+            Intent intent = new Intent(this, CourseDetailsActivity.class);
+            intent.putExtra("course", updateCourse);
+            startActivity(intent);
+        }
     }
 
     //To make the soft keyboard disappear when clicking outside of EditText
