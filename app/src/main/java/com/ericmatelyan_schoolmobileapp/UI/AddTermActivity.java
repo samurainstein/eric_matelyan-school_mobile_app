@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,7 @@ import com.ericmatelyan_schoolmobileapp.Utility.IdManager;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AddTermActivity extends AppCompatActivity {
 
@@ -34,6 +36,7 @@ public class AddTermActivity extends AppCompatActivity {
     private Calendar startCalendar;
     private Calendar endCalendar;
     private SchoolCalendarRepo repository;
+    private List<TermEntity> allTerms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +46,10 @@ public class AddTermActivity extends AppCompatActivity {
         titleText = findViewById(R.id.term_add_title_text);
 
         repository = new SchoolCalendarRepo(getApplication());
-        IdManager.setNextTermId(repository);
-
+        allTerms = repository.getAllTerms();
+        if(!allTerms.isEmpty()) {
+            IdManager.setNextTermId(repository);
+        }
         displayStartDate = findViewById(R.id.term_add_start_text);
         displayEndDate = findViewById(R.id.term_add_end_text);
 
@@ -75,16 +80,26 @@ public class AddTermActivity extends AppCompatActivity {
     }
 
     public void add_term_save(View view) {
-        //FIX THIS: Make sure all fields are filled in.
         int termId = IdManager.getNextTermId();
         String title = titleText.getText().toString();
         Date startDate = startCalendar.getTime();
         Date endDate = endCalendar.getTime();
-        TermEntity newTerm = new TermEntity(termId, title, startDate, endDate);
-        repository.insert(newTerm);
 
-        Intent intent = new Intent(this, TermsActivity.class);
-        startActivity(intent);
+        if(title.isEmpty()) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill in all required fields";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
+        else {
+            TermEntity newTerm = new TermEntity(termId, title, startDate, endDate);
+            repository.insert(newTerm);
+
+            Intent intent = new Intent(this, TermsActivity.class);
+            startActivity(intent);
+        }
     }
 
     //To make the soft keyboard disappear when clicking outside of EditText
