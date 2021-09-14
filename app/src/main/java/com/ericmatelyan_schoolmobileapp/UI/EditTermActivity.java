@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -113,16 +114,25 @@ public class EditTermActivity extends AppCompatActivity {
 
 
     public void add_term_save(View view) {
-        //FIX THIS: Make sure all fields are filled in.
         String title = titleText.getText().toString();
         Date startDate = startCalendar.getTime();
         Date endDate = endCalendar.getTime();
-        TermEntity updateTerm = new TermEntity(termId, title, startDate, endDate);
-        repository.update(updateTerm);
+        if(title.isEmpty()) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill in all required fields";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
-        Intent intent = new Intent(this, TermDetailsActivity.class);
-        intent.putExtra("term", updateTerm);
-        startActivity(intent);
+        else {
+            TermEntity updateTerm = new TermEntity(termId, title, startDate, endDate);
+            repository.update(updateTerm);
+
+            Intent intent = new Intent(this, TermDetailsActivity.class);
+            intent.putExtra("term", updateTerm);
+            startActivity(intent);
+        }
     }
 
     //To make the soft keyboard disappear when clicking outside of EditText
