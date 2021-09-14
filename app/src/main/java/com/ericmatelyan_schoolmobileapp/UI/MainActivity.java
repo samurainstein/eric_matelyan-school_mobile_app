@@ -31,38 +31,38 @@ public class MainActivity extends AppCompatActivity {
         List<CourseEntity> allCourses = repository.getAllCourses();
         List<AssignmentEntity> allAssignments = repository.getAllAssignments();
 
-        if(allTerms.size()==0) {
-            TermEntity term = new TermEntity(IdManager.getNextTermId(),
-                    "Test Term 1",
-                    new Date(),
-                    new Date());
-            repository.insert(term);
-        }
+//        if(allTerms.size()==0) {
+//            TermEntity term = new TermEntity(IdManager.getNextTermId(),
+//                    "Test Term 1",
+//                    new Date(),
+//                    new Date());
+//            repository.insert(term);
+//        }
 
-        if(allCourses.size()==0) {
-            CourseEntity course = new CourseEntity(IdManager.getNextCourseId(),
-                    "Test Course 1",
-                    new Date(),
-                    new Date(),
-                    "In Progress",
-                    "Instructor Name",
-                    "Instructor Phone",
-                    "Instructor Email",
-                    "Test Term 1",
-                    "Test notes");
-            repository.insert(course);
-        }
+//        if(allCourses.size()==0) {
+//            CourseEntity course = new CourseEntity(IdManager.getNextCourseId(),
+//                    "Test Course 1",
+//                    new Date(),
+//                    new Date(),
+//                    "In Progress",
+//                    "Instructor Name",
+//                    "Instructor Phone",
+//                    "Instructor Email",
+//                    "Test Term 1",
+//                    "Test notes");
+//            repository.insert(course);
+//        }
 
-        if(allAssignments.size()==0) {
-            AssignmentEntity assignment = new AssignmentEntity(
-                    IdManager.getNextAssignmentId(),
-                    "Test Assignment 1",
-                    "Test Course 1",
-                    "Performance Assessment",
-                    new Date(),
-                    new Date());
-            repository.insert(assignment);
-        }
+//        if(allAssignments.size()==0) {
+//            AssignmentEntity assignment = new AssignmentEntity(
+//                    IdManager.getNextAssignmentId(),
+//                    "Test Assignment 1",
+//                    "Test Course 1",
+//                    "Performance Assessment",
+//                    new Date(),
+//                    new Date());
+//            repository.insert(assignment);
+//        }
     }
 
     public void termsButton(View view) {
