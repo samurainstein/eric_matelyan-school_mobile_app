@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ericmatelyan_schoolmobileapp.Database.SchoolCalendarRepo;
 import com.ericmatelyan_schoolmobileapp.Entity.AssignmentEntity;
@@ -52,6 +53,7 @@ public class AddAssignmentActivity extends AppCompatActivity {
     private Spinner typeSpinner;
 
     private SchoolCalendarRepo repository;
+    private List<AssignmentEntity> allAssignments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,10 @@ public class AddAssignmentActivity extends AppCompatActivity {
 
         context = AddAssignmentActivity.this;
         repository = new SchoolCalendarRepo(getApplication());
-
+        allAssignments = repository.getAllAssignments();
+        if(!allAssignments.isEmpty()) {
+            IdManager.setNextAssignmentId(repository);
+        }
         titleText = findViewById(R.id.assignment_add_title_text);
         startText = findViewById(R.id.assignment_add_start_text);
         endText = findViewById(R.id.assignment_add_end_text);
@@ -95,18 +100,28 @@ public class AddAssignmentActivity extends AppCompatActivity {
         endDateClass = endCalendar.getTime();
         type = typeSpinner.getSelectedItem().toString();
 
-        AssignmentEntity newAssignment = new AssignmentEntity(
-                assignmentId,
-                assignmentName,
-                assocCourse,
-                type,
-                startDateClass,
-                endDateClass);
-        repository.insert(newAssignment);
+        if(assignmentName.isEmpty()) {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill in all required fields";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
-        Intent intent = new Intent(this, AssignmentDetailsActivity.class);
-        intent.putExtra("assignment", newAssignment);
-        startActivity(intent);
+        else {
+            AssignmentEntity newAssignment = new AssignmentEntity(
+                    assignmentId,
+                    assignmentName,
+                    assocCourse,
+                    type,
+                    startDateClass,
+                    endDateClass);
+            repository.insert(newAssignment);
+
+            Intent intent = new Intent(this, AssignmentDetailsActivity.class);
+            intent.putExtra("assignment", newAssignment);
+            startActivity(intent);
+        }
     }
 
     @Override
