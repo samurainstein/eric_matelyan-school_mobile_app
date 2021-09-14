@@ -1,8 +1,10 @@
 package com.ericmatelyan_schoolmobileapp.UI;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,11 +22,14 @@ import java.util.List;
 public class CoursesActivity extends AppCompatActivity {
 
     private SchoolCalendarRepo repository;
+    private List<TermEntity> allTerms;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses);
+        context = CoursesActivity.this;
 
         repository = new SchoolCalendarRepo(getApplication());
         List<CourseEntity> allCourses = repository.getAllCourses();
@@ -38,8 +43,16 @@ public class CoursesActivity extends AppCompatActivity {
     }
 
     public void addCourse(View view) {
-        Intent intent = new Intent(this, AddCourseActivity.class);
-        startActivity(intent);
-
+        allTerms = repository.getAllTerms();
+        if(allTerms.isEmpty()) {
+            CharSequence text = "Please create a term before creating a course";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else {
+            Intent intent = new Intent(this, AddCourseActivity.class);
+            startActivity(intent);
+        }
     }
 }
